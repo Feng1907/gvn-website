@@ -1,31 +1,50 @@
 import { NextRequest } from "next/server";
-import { getDb } from "../../../lib/mongodb";
-import { ok, serverError } from "../../../lib/apiHelper";
-import { Service } from "../../../lib/types";
+import { connectDB } from "../../../lib/mongodb";
+import { ServiceModel } from "../../../lib/models/Service";
+import { ok, created, badRequest, serverError } from "../../../lib/apiHelper";
 
+// GET /api/services?active=true
 export async function GET(req: NextRequest) {
   try {
-    const db = await getDb();
+    await connectDB();
     const { searchParams } = new URL(req.url);
-    
-    // Lấy query param 'active'
-    const activeParam = searchParams.get("active");
-    
-    const filter: Record<string, boolean> = {};
-    
-    // SỬA LỖI 1: Chuyển đổi string "true"/"false" sang đúng kiểu boolean
-    if (activeParam !== null) {
-      filter.active = activeParam === "true";
-    }
+    const active = searchParams.get("active");
 
-    const services = await db.collection<Service>("services")
-      .find(filter)
-      .sort({ order: 1 })
-      .toArray();
+    const filter: Record<string, unknown> = {};
+    if (active === "true")  filter.active = true;
+    if (active === "false") filter.active = false;
 
-    // SỬA LỖI 2: Luôn trả về ok() ngay cả khi mảng rỗng để Frontend hiện trạng thái "Trống"
-    return ok(services);
+    const items = await ServiceModel.find(filter).sort({ order: 1 }).lean();
+    return ok(items);
   } catch (err) {
+    return serverError(err);
+  }
+}
+
+// POST /api/services
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    if (!body.title || !body.slug || !body.description) {
+      return badRequest("Thiếu trường bắt buộc: title, slug, description");
+    }
+    await connectDB();
+    const service = await ServiceModel.create({
+      title:         body.title,
+      titleEn:       body.titleEn       || "",
+      slug:          body.slug,
+      description:   body.description,
+      descriptionEn: body.descriptionEn || "",
+      emoji:         body.emoji         || "🔧",
+      bg:            body.bg            || "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
+      order:         body.order         ?? 0,
+      active:        body.active        ?? true,
+    });
+    return created(service);
+  } catch (err: unknown) {
+    if ((err as { code?: number }).code === 11000) {
+      return badRequest("Slug đã tồn tại, vui lòng dùng slug khác");
+    }
     return serverError(err);
   }
 }
