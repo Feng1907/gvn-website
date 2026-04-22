@@ -1,0 +1,198 @@
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 620px;
+  padding: 80px 80px;
+  position: relative;
+  overflow: hidden;
+  gap: 64px;
+}
+
+/* Ambient blobs specific to hero */
+.blob1 {
+  position: absolute;
+  top: -120px; left: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: blobFloat 14s ease-in-out infinite;
+}
+.blob2 {
+  position: absolute;
+  bottom: -100px; right: 35%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.11) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: blobFloat 18s ease-in-out infinite reverse;
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(20px, 30px); }
+}
+
+/* Content */
+.content { flex: 1; max-width: 520px; z-index: 2; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  border-radius: 99px; padding: 6px 16px;
+  font-size: 12px; font-weight: 600; color: #60a5fa;
+  margin-bottom: 24px; letter-spacing: .5px;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.9);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(59, 130, 246, 0.9); transform: scale(1); }
+  50%       { box-shadow: 0 0 14px rgba(59, 130, 246, 1); transform: scale(1.4); }
+}
+
+.heading {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 48px);
+  line-height: 1.18;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.gradientText {
+  background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desc {
+  font-size: 16px; color: rgba(255, 255, 255, 0.58);
+  line-height: 1.75; margin-bottom: 36px;
+}
+
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.stats {
+  display: flex; align-items: center;
+  margin-top: 48px; padding-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.statItem { display: flex; flex-direction: column; gap: 3px; padding: 0 28px; }
+.statItem:first-child { padding-left: 0; }
+.statNum {
+  font-family: 'Lexend', sans-serif;
+  font-size: 30px; font-weight: 800; color: #fff; line-height: 1;
+}
+.plus { color: #f97316; }
+.statLabel { font-size: 12px; color: rgba(255, 255, 255, 0.42); font-weight: 500; }
+.divider { width: 1px; height: 40px; background: rgba(255, 255, 255, 0.10); flex-shrink: 0; }
+
+/* ── Bento Grid ── */
+.bento {
+  flex: 0 0 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 12px;
+  z-index: 2;
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s, background .25s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top shine line */
+.cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.cell:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* Wide: 2 cols */
+.wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 16px; }
+
+/* Tall: 2 rows */
+.tall { grid-row: span 2; }
+
+/* Color accents */
+.cellBlue   { border-color: rgba(59, 130, 246, 0.22); }
+.cellTeal   { border-color: rgba(34, 211, 238, 0.18); }
+.cellPurple { border-color: rgba(167, 139, 250, 0.18); }
+.cellGreen  { border-color: rgba(52, 211, 153, 0.18); }
+.cellOrange { border-color: rgba(249, 115, 22, 0.18); }
+
+.cellBlue:hover   { box-shadow: 0 20px 56px rgba(59, 130, 246, 0.28); border-color: rgba(59, 130, 246, 0.4); }
+.cellTeal:hover   { box-shadow: 0 20px 56px rgba(34, 211, 238, 0.24); border-color: rgba(34, 211, 238, 0.36); }
+.cellPurple:hover { box-shadow: 0 20px 56px rgba(167, 139, 250, 0.24); border-color: rgba(167, 139, 250, 0.36); }
+.cellGreen:hover  { box-shadow: 0 20px 56px rgba(52, 211, 153, 0.24); border-color: rgba(52, 211, 153, 0.36); }
+.cellOrange:hover { box-shadow: 0 20px 56px rgba(249, 115, 22, 0.24); border-color: rgba(249, 115, 22, 0.36); }
+
+.cellIcon    { font-size: 28px; line-height: 1; }
+.cellTitle   { font-family: 'Lexend', sans-serif; font-weight: 600; font-size: 14px; color: #fff; }
+.cellDesc    { font-size: 12px; color: rgba(255, 255, 255, 0.42); line-height: 1.5; }
+.cellContent { flex: 1; }
+.cellStat {
+  margin-top: auto;
+  display: flex; flex-direction: column; gap: 1px;
+}
+.cellStat span { font-family: 'Lexend', sans-serif; font-size: 34px; font-weight: 800; color: #a78bfa; line-height: 1; }
+.cellStat small { font-size: 11px; color: rgba(255, 255, 255, 0.38); }
+.cellBadge {
+  margin-left: auto; flex-shrink: 0;
+  background: rgba(52, 211, 153, 0.14);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 11px; font-weight: 600;
+  color: #34d399;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .hero { padding: 60px 48px; gap: 40px; }
+  .bento { flex: 0 0 360px; }
+}
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 48px 24px 40px;
+    text-align: center;
+    min-height: auto;
+  }
+  .btns { justify-content: center; }
+  .stats { justify-content: center; }
+  .bento { flex: none; width: 100%; max-width: 480px; }
+  .content { max-width: 100%; }
+  .statItem { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+  .bento { grid-template-columns: 1fr; }
+  .wide  { grid-column: span 1; flex-direction: column; }
+  .tall  { grid-row: span 1; }
+  .cellBadge { margin-left: 0; }
+}

@@ -1,0 +1,220 @@
+/* CTA Banner */
+.ctaBanner {
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.65) 0%, rgba(6, 182, 212, 0.45) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  margin: 0 80px;
+  border-radius: 28px;
+  padding: 56px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 64px rgba(29, 78, 216, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  position: relative;
+  overflow: hidden;
+}
+.ctaBanner::before {
+  content: '';
+  position: absolute; right: 160px; top: -80px;
+  width: 320px; height: 320px;
+  background: rgba(255, 255, 255, 0.05); border-radius: 50%;
+}
+.ctaBanner::after {
+  content: '';
+  position: absolute; left: -60px; bottom: -60px;
+  width: 200px; height: 200px;
+  background: rgba(255, 255, 255, 0.04); border-radius: 50%;
+}
+.ctaText { flex: 1; z-index: 1; }
+.ctaText h2 {
+  font-family: 'Lexend', sans-serif;
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-weight: 700; color: white;
+  max-width: 520px; line-height: 1.3; margin-bottom: 10px;
+}
+.ctaText p { color: rgba(255, 255, 255, 0.7); font-size: 15px; line-height: 1.65; }
+.ctaImg { font-size: 88px; line-height: 1; z-index: 1; flex-shrink: 0; }
+.btnWhite {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1d4ed8;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700; font-size: 15px; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all .25s; white-space: nowrap; flex-shrink: 0; z-index: 1;
+}
+.btnWhite:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+/* Footer */
+.footer {
+  background: rgba(4, 7, 16, 0.96);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 72px 80px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  gap: 48px; margin-bottom: 56px;
+}
+
+.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.logoCircle {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Lexend', sans-serif;
+  font-weight: 800; font-size: 12px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+}
+.logoName { font-family: 'Lexend', sans-serif; font-weight: 700; font-size: 13px; color: white; }
+.logoSub  { font-size: 9px; color: rgba(255, 255, 255, 0.3); letter-spacing: .3px; }
+
+.desc { font-size: 14px; line-height: 1.8; max-width: 260px; margin-bottom: 22px; }
+
+.socials { display: flex; gap: 8px; }
+.socialBtn {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; cursor: pointer; transition: all .22s;
+}
+.socialBtn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+}
+
+.colTitle {
+  color: white; font-family: 'Lexend', sans-serif;
+  font-size: 15px; font-weight: 600; margin-bottom: 20px;
+  position: relative;
+}
+.colTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 0;
+  width: 28px; height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #22d3ee);
+  border-radius: 2px;
+}
+
+.links { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.link {
+  color: rgba(255, 255, 255, 0.5); text-decoration: none;
+  font-size: 14px; transition: all .2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.link::before { content: '›'; color: #22d3ee; font-weight: 700; font-size: 15px; }
+.link:hover { color: white; padding-left: 4px; }
+
+.contacts { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+.contactItem { display: flex; gap: 12px; font-size: 14px; line-height: 1.6; }
+.contactIcon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+.newsletterDesc { font-size: 14px; line-height: 1.75; margin-bottom: 16px; margin-top: 16px; }
+.newsletterRow  { display: flex; gap: 8px; }
+.input {
+  flex: 1; padding: 12px 16px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 14px; font-family: 'Be Vietnam Pro', sans-serif;
+  outline: none; transition: border-color .2s, background .2s;
+}
+.input::placeholder { color: rgba(255, 255, 255, 0.3); }
+.input:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(255, 255, 255, 0.09);
+}
+.subscribeBtn {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white; border: none;
+  padding: 12px 16px; border-radius: 10px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700; font-size: 12px; cursor: pointer;
+  white-space: nowrap; letter-spacing: .5px;
+  transition: all .22s;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+.subscribeBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5); }
+.successMsg { margin-top: 10px; font-size: 13px; color: #34d399; font-weight: 600; }
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+  display: flex; justify-content: space-between;
+  align-items: center; font-size: 13px; flex-wrap: wrap; gap: 8px;
+  color: rgba(255, 255, 255, 0.32);
+}
+.bottomLink { color: #22d3ee; text-decoration: none; }
+.bottomLink:hover { text-decoration: underline; }
+
+/* Floating buttons */
+.floatBtns {
+  position: fixed; right: 24px; bottom: 96px;
+  z-index: 200; display: flex; flex-direction: column; gap: 10px;
+}
+.floatBtn {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 22px; border: none;
+  transition: all .22s;
+  backdrop-filter: blur(10px);
+}
+.floatBtn:hover { transform: scale(1.12) translateY(-2px); }
+.phone {
+  background: rgba(37, 211, 102, 0.85);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  border: 1px solid rgba(37, 211, 102, 0.5);
+}
+.zalo  {
+  background: rgba(0, 104, 255, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 104, 255, 0.4);
+  border: 1px solid rgba(0, 104, 255, 0.5);
+}
+
+.backTop {
+  position: fixed; right: 24px; bottom: 32px;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: rgba(255, 255, 255, 0.7); font-weight: 700;
+  transition: all .22s; z-index: 200;
+}
+.backTop:hover {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ctaBanner { margin: 0 40px; padding: 44px 48px; }
+  .footer { padding: 56px 40px 24px; }
+  .ctaImg { display: none; }
+}
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .ctaBanner { margin: 0 16px; padding: 36px 28px; flex-direction: column; text-align: center; }
+  .footer { padding: 44px 24px 24px; }
+  .bottom { justify-content: center; text-align: center; }
+}

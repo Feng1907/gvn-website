@@ -1,0 +1,164 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 13, 26, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+}
+
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; flex-shrink: 0;
+}
+.logoCircle {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: 'Lexend', sans-serif;
+  font-weight: 800; font-size: 12px; letter-spacing: 1px;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.45);
+}
+.logoText {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700; font-size: 16px; color: #fff; line-height: 1.1;
+}
+.logoSub { font-size: 9px; color: rgba(255, 255, 255, 0.35); letter-spacing: .5px; }
+
+.navLinks { display: flex; align-items: center; gap: 2px; }
+.navLink {
+  font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.6);
+  text-decoration: none; padding: 8px 14px; border-radius: 10px;
+  transition: all .2s; white-space: nowrap;
+  display: flex; align-items: center; gap: 3px;
+}
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+}
+.navLink.active {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.14);
+  font-weight: 600;
+}
+
+.navRight { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+/* Language switcher */
+.langGroup {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+.langBtn {
+  height: 32px;
+  padding: 0 14px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all .18s;
+  letter-spacing: .5px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.langBtn:hover:not(.langActive) { color: white; background: rgba(255, 255, 255, 0.08); }
+.langActive {
+  background: #3b82f6 !important;
+  color: white !important;
+  border-radius: 99px;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255, 255, 255, 0.75); border-radius: 2px;
+}
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(8, 13, 26, 0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  padding: 16px 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  z-index: 99; display: flex; flex-direction: column; gap: 4px;
+}
+.mobileLang {
+  display: flex; gap: 8px; padding: 12px 16px 4px;
+}
+.mobileLang .langBtn {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 99px;
+  padding: 6px 16px;
+}
+
+.dropdownWrap { position: relative; }
+
+.arrow {
+  font-size: 10px; opacity: .5;
+  display: inline-block;
+  transition: transform .2s;
+  margin-left: 2px;
+}
+.arrowUp { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 270px;
+  background: rgba(10, 16, 32, 0.95);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  padding: 8px;
+  z-index: 200;
+  animation: dropIn .18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ddItem {
+  display: block;
+  padding: 11px 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: all .18s;
+  line-height: 1.5;
+  border-radius: 10px;
+}
+.ddItem:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  padding-left: 22px;
+}
+
+@media (max-width: 900px) {
+  .navbar { padding: 0 24px; }
+  .navLinks { display: none; }
+  .hamburger { display: flex; }
+}
