@@ -16,7 +16,7 @@
 | 5 | Email Service | ✅ XONG | CAO |
 | 6 | SEO & Metadata | ✅ XONG | TRUNG BÌNH |
 | 7 | Spring Boot Backend | ✅ XONG | TƯƠNG LAI |
-| 8 | Tích hợp Next.js ↔ Spring Boot | ⬜ CHƯA LÀM | TƯƠNG LAI |
+| 8 | Tích hợp Next.js ↔ Spring Boot | ✅ XONG | TƯƠNG LAI |
 | 9 | Deployment | 🔄 ĐANG TIẾN HÀNH | Song song |
 | 10 | Admin Dashboard | ⬜ CHƯA LÀM | THẤP |
 
@@ -271,38 +271,30 @@ server.port: 8080
 
 ---
 
-## PHASE 8 — TÍCH HỢP NEXT.JS ↔ SPRING BOOT ⬜ CHƯA LÀM
+## PHASE 8 — TÍCH HỢP NEXT.JS ↔ SPRING BOOT ✅ XONG
+**Branch:** `feature/api-integration`
 
-### API Abstraction Layer — `lib/apiClient.ts`
+- [x] Tạo `frontend/lib/apiClient.ts` — abstraction layer đầy đủ:
+  - `fetchProducts()`, `fetchProductBySlug()`
+  - `fetchArticles()`, `fetchArticleBySlug()`
+  - `fetchServices()`, `fetchServiceBySlug()`
+  - `fetchProjects()`, `fetchProjectBySlug()`
+  - `fetchSearch()`, `postContact()`
+  - Export types: `ProductItem`, `ArticleItem`, `ServiceItem`, `ProjectItem`, `ApiPage<T>`
+- [x] Cập nhật `frontend/next.config.ts` — proxy rewrites `/api/v1/:path*` → Spring Boot
+- [x] Cập nhật `frontend/.env.local` — thêm `NEXT_PUBLIC_USE_SPRING`, `SPRING_BOOT_URL`
+- [x] Cập nhật pages dùng `apiClient` (dynamic import):
+  - `app/products/page.tsx` → `fetchProducts()`
+  - `app/products/[id]/page.tsx` → `fetchProductBySlug()`
+  - `app/news/page.tsx` → `fetchArticles()`
+  - `app/contact/page.tsx` → `postContact()`
 
-```typescript
-const BASE = process.env.NEXT_PUBLIC_USE_SPRING === "true"
-  ? "/api/v1"   // proxy → Spring Boot
-  : "/api";     // Next.js API routes
-
-export async function fetchProducts(params?) { ... }
-export async function fetchProductBySlug(slug: string) { ... }
-```
-
-### Proxy trong `next.config.ts`
-
-```typescript
-async rewrites() {
-  if (process.env.NEXT_PUBLIC_USE_SPRING !== "true") return [];
-  return [{ source: "/api/v1/:path*", destination: `${SPRING_BOOT_URL}/api/v1/:path*` }];
-}
-```
-
-### Env Variables cần thêm
-
+**Cách chuyển sang Spring Boot:**
 ```bash
-NEXT_PUBLIC_USE_SPRING=false     # true = dùng Spring Boot
+# frontend/.env.local
+NEXT_PUBLIC_USE_SPRING=true
 SPRING_BOOT_URL=http://localhost:8080
 ```
-
-- [ ] Tạo `lib/apiClient.ts`
-- [ ] Cập nhật `next.config.ts`
-- [ ] Cập nhật pages dùng `apiClient`
 
 ---
 

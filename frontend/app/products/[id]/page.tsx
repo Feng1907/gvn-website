@@ -262,36 +262,30 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   const [notFoundApi, setNotFoundApi] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/products/${slug}`)
-      .then(r => {
-        if (r.status === 404) { setNotFoundApi(true); return null; }
-        return r.ok ? r.json() : null;
-      })
-      .then(data => {
-        if (data?.success && data.data) {
-          const d = data.data;
-          setApiProduct({
-            id: 0,
-            name: d.name || "",
-            nameEn: d.nameEn || d.name || "",
-            category: d.category || "",
-            categoryEn: d.category || "",
-            categoryPath: ["Sản phẩm", d.category || ""],
-            categoryPathEn: ["Products", d.category || ""],
-            images: d.images || [],
-            imageFallbacks: d.imageFallbacks || [],
-            bg: d.bg || "#f8faff",
-            description: d.description || "<p>Đang cập nhật.</p>",
-            descriptionEn: d.descriptionEn || d.description || "<p>Being updated.</p>",
-            specs: d.specs || [],
-            features: d.features || [],
-            featuresEn: d.featuresEn || [],
-            relatedIds: [],
-          });
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    import("../../../lib/apiClient").then(({ fetchProductBySlug }) =>
+      fetchProductBySlug(slug)
+    ).then(d => {
+      if (!d) { setNotFoundApi(true); return; }
+      setApiProduct({
+        id: 0,
+        name:           d.name || "",
+        nameEn:         d.nameEn || d.name || "",
+        category:       d.category || "",
+        categoryEn:     d.category || "",
+        categoryPath:   ["Sản phẩm", d.category || ""],
+        categoryPathEn: ["Products", d.category || ""],
+        images:         d.images || [],
+        imageFallbacks: d.imageFallbacks || [],
+        bg:             d.bg || "#f8faff",
+        description:    d.description || "<p>Đang cập nhật.</p>",
+        descriptionEn:  d.descriptionEn || d.description || "<p>Being updated.</p>",
+        specs:          d.specs || [],
+        features:       d.features || [],
+        featuresEn:     d.featuresEn || [],
+        relatedIds:     [],
+      });
+    }).catch(() => {})
+    .finally(() => setLoading(false));
   }, [slug]);
 
   // Fallback sang productDatabase cũ theo numeric ID
