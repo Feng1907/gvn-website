@@ -12,7 +12,7 @@
 | 1 | Bug Fix Sprint | ✅ XONG | KHẨN CẤP |
 | 2 | Trang Chi Tiết | ✅ XONG | CAO |
 | 3 | DB Migration | ✅ XONG | TRUNG BÌNH-CAO |
-| 4 | Design System | ⬜ CHƯA LÀM | TRUNG BÌNH |
+| 4 | Design System | ✅ XONG | TRUNG BÌNH |
 | 5 | Email Service | ⬜ CHƯA LÀM | CAO |
 | 6 | SEO & Metadata | ⬜ CHƯA LÀM | TRUNG BÌNH |
 | 7 | Spring Boot Backend | ⬜ CHƯA LÀM | TƯƠNG LAI |
@@ -127,7 +127,7 @@ main ← chỉ merge từ develop khi stable
 
 ---
 
-## PHASE 4 — DESIGN SYSTEM ⬜ CHƯA LÀM
+## PHASE 4 — DESIGN SYSTEM ✅ XONG
 **Ưu tiên: TRUNG BÌNH**
 
 ### 4.1 GVN Brand Color Tokens — thêm vào `app/globals.css`
@@ -171,9 +171,9 @@ main ← chỉ merge từ develop khi stable
 }
 ```
 
-- [ ] Thêm CSS variables GVN brand vào `app/globals.css`
-- [ ] Cập nhật `.btn-primary` dùng `--gvn-primary-500`
-- [ ] Không xóa biến cũ để tránh break
+- [x] Thêm CSS variables GVN brand vào `app/globals.css`
+- [x] Cập nhật `.btn-primary` dùng `--gvn-primary-500` + `--shadow-blue`
+- [x] Không xóa biến cũ để tránh break
 
 ---
 
