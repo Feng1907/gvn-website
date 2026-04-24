@@ -239,10 +239,24 @@ async function seed() {
       "Linh kiện máy tính", "cntt-cong-trinh",
       "CPU", "#0ea5e9", "⚡",
       "linear-gradient(135deg,#e8f8ff,#d0f0ff)",
-      [],
+      ["/images/products/cpu-intel-i7-13700k.svg"],
       ["https://www.intel.com/content/dam/products/sku/230494/intel-core-i7-13700k-processor/intel-core-i7-13700k-processor-boxshot.png"],
-      "<p>Intel Core i7-13700K, 16 nhân (8P+8E), 24 luồng, xung nhịp tối đa 5.4GHz, TDP 125W.</p>",
-      "<p>Intel Core i7-13700K, 16 cores (8P+8E), 24 threads, max turbo 5.4GHz, TDP 125W.</p>",
+      `<p><strong>Intel Core i7-13700K — Raptor Lake</strong></p>
+<p>Bộ vi xử lý Intel Core i7-13700K thế hệ 13 (Raptor Lake) với kiến trúc hybrid 16 nhân (8 Performance + 8 Efficient), 24 luồng xử lý. Xung nhịp boost tối đa 5.4GHz, phù hợp cho gaming, đồ họa và workstation hiệu suất cao.</p>
+<ul>
+  <li>Kiến trúc hybrid P-core + E-core tối ưu hiệu năng/watt</li>
+  <li>Hỗ trợ DDR4 và DDR5 linh hoạt</li>
+  <li>PCIe 5.0 và PCIe 4.0 song song</li>
+  <li>Intel UHD Graphics 770 tích hợp</li>
+</ul>`,
+      `<p><strong>Intel Core i7-13700K — Raptor Lake</strong></p>
+<p>13th Gen Intel Core i7-13700K with hybrid architecture: 16 cores (8P+8E), 24 threads, up to 5.4GHz boost. Ideal for gaming, creative workloads, and workstation tasks.</p>
+<ul>
+  <li>Hybrid P-core + E-core architecture</li>
+  <li>Supports both DDR4 and DDR5</li>
+  <li>PCIe 5.0 and PCIe 4.0</li>
+  <li>Intel UHD Graphics 770 integrated</li>
+</ul>`,
       [
         { label: "Nhân/Luồng", labelEn: "Cores/Threads", value: "16 nhân / 24 luồng", valueEn: "16 cores / 24 threads" },
         { label: "Xung nhịp", labelEn: "Base clock", value: "3.4GHz (boost 5.4GHz)", valueEn: "3.4GHz (boost 5.4GHz)" },
@@ -263,10 +277,24 @@ async function seed() {
       "Linh kiện máy tính", "cntt-cong-trinh",
       "RAM", "#10b981", "🎴",
       "linear-gradient(135deg,#e8fff5,#d0ffe8)",
-      [],
+      ["/images/products/ram-kingston-8gb-ddr4.svg"],
       ["https://www.kingston.com/images/products/kvr_large/KVR32N22S6_8.jpg"],
-      "<p>RAM Kingston 8GB DDR4 3200MHz, CL22, điện áp 1.2V, tương thích rộng rãi với mọi mainboard DDR4.</p>",
-      "<p>Kingston 8GB DDR4 3200MHz RAM, CL22, 1.2V voltage, widely compatible with all DDR4 motherboards.</p>",
+      `<p><strong>RAM Kingston ValueRAM 8GB DDR4 3200MHz</strong></p>
+<p>Bộ nhớ Kingston KVR32N22S6/8 dung lượng 8GB, chuẩn DDR4 tốc độ 3200MHz, CL22. Thiết kế 1 thanh SODIMM không tản nhiệt, điện áp thấp 1.2V, tương thích rộng rãi với mọi mainboard hỗ trợ DDR4.</p>
+<ul>
+  <li>Dung lượng 8GB, nâng cấp dễ dàng lên dual-channel 16GB</li>
+  <li>Bảo hành trọn đời từ Kingston</li>
+  <li>Tương thích Intel và AMD platform</li>
+  <li>Tiêu thụ điện năng thấp 1.2V</li>
+</ul>`,
+      `<p><strong>Kingston ValueRAM 8GB DDR4 3200MHz</strong></p>
+<p>Kingston KVR32N22S6/8 8GB DDR4-3200MHz CL22 memory. Single stick, no heatspreader, low voltage 1.2V design. Wide compatibility across Intel and AMD DDR4 motherboards.</p>
+<ul>
+  <li>8GB capacity, easy dual-channel 16GB upgrade</li>
+  <li>Lifetime warranty from Kingston</li>
+  <li>Compatible with Intel and AMD platforms</li>
+  <li>Low power 1.2V consumption</li>
+</ul>`,
       [
         { label: "Dung lượng", labelEn: "Capacity", value: "8GB", valueEn: "8GB" },
         { label: "Xung nhịp", labelEn: "Speed", value: "3200MHz", valueEn: "3200MHz" },
@@ -287,10 +315,24 @@ async function seed() {
       "Linh kiện máy tính", "cntt-cong-trinh",
       "SSD", "#f97316", "💿",
       "linear-gradient(135deg,#fff8e8,#ffedd0)",
-      [],
+      ["/images/products/ssd-samsung-870-evo-1tb.svg"],
       ["https://images.samsung.com/is/image/samsung/p6pim/uk/mz-77e1t0b-eu/gallery/uk-870-evo-sata-iii-2-5-1tb-mz-77e1t0b-eu-frontblack-thumb-534873041"],
-      "<p>Samsung 870 EVO 1TB, chuẩn SATA III 6Gb/s, đọc 560MB/s, ghi 530MB/s. Bảo hành 5 năm.</p>",
-      "<p>Samsung 870 EVO 1TB, SATA III 6Gb/s standard, 560MB/s read, 530MB/s write. 5-year warranty.</p>",
+      `<p><strong>Samsung 870 EVO 1TB — SATA SSD</strong></p>
+<p>Ổ cứng thể rắn Samsung 870 EVO 1TB sử dụng chuẩn SATA III 6Gb/s, công nghệ V-NAND 3-bit MLC thế hệ mới. Tốc độ đọc tuần tự 560MB/s, ghi 530MB/s. Đây là lựa chọn lý tưởng để nâng cấp từ HDD truyền thống.</p>
+<ul>
+  <li>Công nghệ Samsung V-NAND 3-bit MLC bền bỉ</li>
+  <li>Tốc độ đọc/ghi ngẫu nhiên 98K/88K IOPS</li>
+  <li>Bộ nhớ đệm thông minh Samsung Intelligent TurboWrite</li>
+  <li>Bảo hành 5 năm hoặc 600TBW</li>
+</ul>`,
+      `<p><strong>Samsung 870 EVO 1TB — SATA SSD</strong></p>
+<p>Samsung 870 EVO 1TB SATA III 6Gb/s SSD with V-NAND 3-bit MLC technology. Sequential read 560MB/s, write 530MB/s. Ideal upgrade from traditional HDD.</p>
+<ul>
+  <li>Samsung V-NAND 3-bit MLC technology</li>
+  <li>98K/88K random read/write IOPS</li>
+  <li>Samsung Intelligent TurboWrite cache</li>
+  <li>5-year warranty or 600TBW</li>
+</ul>`,
       [
         { label: "Dung lượng", labelEn: "Capacity", value: "1TB", valueEn: "1TB" },
         { label: "Giao tiếp", labelEn: "Interface", value: "SATA III 6Gb/s", valueEn: "SATA III 6Gb/s" },
@@ -336,10 +378,24 @@ async function seed() {
       "Sản phẩm công trình", "cntt-cong-trinh",
       "QMS", "#0f4f9e", "🔢",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/davisoft-qms-controller.svg"],
       ["https://davisoft.vn/wp-content/uploads/2020/07/qms-pro.jpg"],
-      "<p>Bộ điều khiển hệ thống lấy số tự động DAVISOFT, tích hợp màn hình hiển thị và loa thông báo.</p>",
-      "<p>DAVISOFT automatic queue management controller, integrates display screen and announcement speaker.</p>",
+      `<p><strong>Bộ điều khiển hệ thống lấy số DAVISOFT</strong></p>
+<p>Bộ điều khiển trung tâm cho hệ thống quản lý hàng đợi (QMS) DAVISOFT, tích hợp màn hình LED hiển thị số thứ tự, loa phát thanh thông báo tự động và phần mềm quản lý. Phù hợp cho ngân hàng, bệnh viện, cơ quan hành chính.</p>
+<ul>
+  <li>Màn hình LED matrix hiển thị số thứ tự rõ nét</li>
+  <li>Loa thông báo âm thanh chất lượng cao</li>
+  <li>Kết nối LAN/WiFi quản lý từ xa</li>
+  <li>Phần mềm thống kê và báo cáo</li>
+</ul>`,
+      `<p><strong>DAVISOFT Queue Management Controller</strong></p>
+<p>Central controller for DAVISOFT Queue Management System (QMS), integrates LED matrix display, automatic announcement speaker, and management software. Suitable for banks, hospitals, and government offices.</p>
+<ul>
+  <li>Clear LED matrix ticket number display</li>
+  <li>High-quality audio announcement speaker</li>
+  <li>LAN/WiFi remote management</li>
+  <li>Statistics and reporting software</li>
+</ul>`,
       [
         { label: "Thương hiệu", labelEn: "Brand", value: "DAVISOFT", valueEn: "DAVISOFT" },
         { label: "Bảo hành", labelEn: "Warranty", value: "12 tháng", valueEn: "12 months" },
@@ -445,10 +501,26 @@ async function seed() {
       "Sản phẩm công trình", "cntt-cong-trinh",
       "Camera", "#10b981", "📷",
       "linear-gradient(135deg,#e8fff5,#d0ffe8)",
-      [],
+      ["/images/products/camera-hikvision-4mp.svg"],
       ["https://www.hikvision.com/content/dam/hikvision/en/marketing/image/latest-image/2020/fixed-dome/DS-2CD2143G2-I_1500500.jpg"],
-      "<p>Camera Hikvision 4MP, AcuSense AI, phát hiện người/xe, IR 40m, IP67, IK10 chống va đập.</p>",
-      "<p>Hikvision 4MP camera, AcuSense AI, human/vehicle detection, 40m IR, IP67, IK10 vandal-proof.</p>",
+      `<p><strong>Camera IP Hikvision DS-2CD2143G2-I 4MP AcuSense</strong></p>
+<p>Camera dome cố định Hikvision 4MP tích hợp công nghệ AI AcuSense thế hệ 2, cho phép phân biệt người và xe từ xa, giảm thiểu cảnh báo sai. Phạm vi hồng ngoại 40m, chống nước IP67, chống va đập IK10.</p>
+<ul>
+  <li>Độ phân giải 4MP (2560×1440) ban ngày lẫn ban đêm</li>
+  <li>AI AcuSense phát hiện người/xe chính xác</li>
+  <li>Hồng ngoại thông minh 40m, tự điều chỉnh cường độ</li>
+  <li>IP67 chống bụi/nước, IK10 chống phá hoại</li>
+  <li>Wide Dynamic Range (WDR) 120dB</li>
+</ul>`,
+      `<p><strong>Hikvision DS-2CD2143G2-I 4MP AcuSense IP Camera</strong></p>
+<p>Fixed dome IP camera with 2nd generation AcuSense AI for accurate human/vehicle detection, minimizing false alarms. 40m IR range, IP67 weather-proof, IK10 vandal-proof.</p>
+<ul>
+  <li>4MP (2560×1440) day and night resolution</li>
+  <li>AcuSense AI for precise human/vehicle detection</li>
+  <li>40m smart IR with auto-intensity adjustment</li>
+  <li>IP67 dust/water proof, IK10 vandal resistant</li>
+  <li>120dB Wide Dynamic Range (WDR)</li>
+</ul>`,
       [
         { label: "Độ phân giải", labelEn: "Resolution", value: "4MP (2560×1440)", valueEn: "4MP (2560×1440)" },
         { label: "IR", labelEn: "IR Range", value: "40m", valueEn: "40m" },
@@ -469,10 +541,26 @@ async function seed() {
       "Sản phẩm công trình", "cntt-cong-trinh",
       "Switch", "#0f4f9e", "🔌",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/switch-cisco-sg350-28p.svg"],
       ["https://www.cisco.com/c/dam/en/us/products/collateral/switches/small-business-smart-switches/product-image-sg350-28p.png"],
-      "<p>Cisco SG350-28P, 24 cổng PoE+ 10/100/1000, tổng PoE 195W, 4 cổng combo SFP, quản lý web.</p>",
-      "<p>Cisco SG350-28P, 24 PoE+ 10/100/1000 ports, 195W total PoE, 4 combo SFP ports, web managed.</p>",
+      `<p><strong>Cisco SG350-28P — 28-Port Gigabit PoE Managed Switch</strong></p>
+<p>Switch Gigabit quản lý Cisco SG350-28P với 24 cổng PoE+ Gigabit và 4 cổng combo SFP/Gigabit. Tổng công suất PoE 195W, phù hợp cấp nguồn cho camera IP, điện thoại VoIP và Access Point WiFi. Hỗ trợ VLAN, QoS, ACL và IPv6.</p>
+<ul>
+  <li>24 cổng PoE+ Gigabit (tổng 195W) + 4 cổng SFP combo</li>
+  <li>Quản lý web-based, CLI và SNMP</li>
+  <li>Hỗ trợ VLAN 802.1Q, QoS, ACL, STP/RSTP</li>
+  <li>Switching capacity 56Gbps, throughput 41.67Mpps</li>
+  <li>Bảo hành trọn đời (Limited Lifetime)</li>
+</ul>`,
+      `<p><strong>Cisco SG350-28P — 28-Port Gigabit PoE Managed Switch</strong></p>
+<p>Cisco SG350-28P managed Gigabit switch with 24 PoE+ Gigabit ports and 4 combo SFP/Gigabit ports. Total PoE budget 195W, ideal for powering IP cameras, VoIP phones, and WiFi access points. Supports VLAN, QoS, ACL, and IPv6.</p>
+<ul>
+  <li>24x PoE+ Gigabit ports (195W total) + 4x SFP combo</li>
+  <li>Web-based, CLI and SNMP management</li>
+  <li>802.1Q VLAN, QoS, ACL, STP/RSTP support</li>
+  <li>56Gbps switching capacity, 41.67Mpps throughput</li>
+  <li>Limited Lifetime warranty</li>
+</ul>`,
       [
         { label: "Số cổng", labelEn: "Ports", value: "24x PoE+ + 4 SFP", valueEn: "24x PoE+ + 4 SFP" },
         { label: "Tổng PoE", labelEn: "Total PoE", value: "195W", valueEn: "195W" },
@@ -493,10 +581,26 @@ async function seed() {
       "Thiết bị ngân hàng", "ngan-hang",
       "Máy đếm tiền", "#0f4f9e", "💵",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/may-dem-tien-ribao-bc2000v.svg"],
       ["https://ribao-technology.com/wp-content/uploads/2020/10/BC-2000V-600x600.jpg"],
-      "<p>Máy đếm tiền RIBAO BC-2000V, phát hiện tiền giả UV/MG/IR, đếm 1000 tờ/phút, màn hình LED.</p>",
-      "<p>RIBAO BC-2000V currency counter, UV/MG/IR counterfeit detection, 1000 notes/min, LED display.</p>",
+      `<p><strong>Máy đếm tiền RIBAO BC-2000V</strong></p>
+<p>Máy đếm tiền chuyên dụng RIBAO BC-2000V tốc độ cao 1000 tờ/phút, tích hợp 3 phương pháp phát hiện tiền giả: UV (tia cực tím), MG (từ tính) và IR (hồng ngoại). Màn hình LED hiển thị rõ ràng, phù hợp cho ngân hàng, siêu thị và doanh nghiệp.</p>
+<ul>
+  <li>Tốc độ đếm 1000 tờ/phút</li>
+  <li>Phát hiện tiền giả 3 lớp: UV + MG + IR</li>
+  <li>Dung tích khay nhập 300 tờ, khay xuất 200 tờ</li>
+  <li>Màn hình LED 2 mặt hiển thị số lượng</li>
+  <li>Tự động dừng khi phát hiện tiền giả hoặc tiền đôi</li>
+</ul>`,
+      `<p><strong>RIBAO BC-2000V Currency Counter</strong></p>
+<p>High-speed RIBAO BC-2000V currency counter at 1000 notes/min with triple counterfeit detection: UV (ultraviolet), MG (magnetic) and IR (infrared). Clear LED display, suitable for banks, supermarkets, and businesses.</p>
+<ul>
+  <li>1000 notes/minute counting speed</li>
+  <li>Triple counterfeit detection: UV + MG + IR</li>
+  <li>300-note input hopper, 200-note output stacker</li>
+  <li>Dual-sided LED display showing count</li>
+  <li>Auto-stop on counterfeit or double-note detection</li>
+</ul>`,
       [
         { label: "Tốc độ đếm", labelEn: "Counting speed", value: "1000 tờ/phút", valueEn: "1000 notes/min" },
         { label: "Phát hiện tiền giả", labelEn: "Counterfeit detection", value: "UV, MG, IR", valueEn: "UV, MG, IR" },
@@ -516,10 +620,26 @@ async function seed() {
       "Thiết bị ngân hàng", "ngan-hang",
       "Máy in nhiệt", "#1a6fc4", "🖨️",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/may-in-nhiet-epson-tm-t82iii.svg"],
       ["https://www.epson.com.sg/content/dam/epson/common/products/printers/pos/tm-t82iii.jpg"],
-      "<p>Epson TM-T82III, tốc độ in 250mm/s, khổ giấy 80mm, cổng USB+Serial+LAN, hỗ trợ ESC/POS.</p>",
-      "<p>Epson TM-T82III, 250mm/s print speed, 80mm paper width, USB+Serial+LAN ports, ESC/POS support.</p>",
+      `<p><strong>Máy in hóa đơn nhiệt Epson TM-T82III</strong></p>
+<p>Máy in hóa đơn nhiệt Epson TM-T82III chuyên dụng cho POS, ngân hàng và bán lẻ. Tốc độ in 250mm/s, khổ giấy 80mm chuẩn, hỗ trợ đa kết nối USB + Serial + LAN. Tương thích ESC/POS và các phần mềm bán hàng phổ biến.</p>
+<ul>
+  <li>Tốc độ in nhiệt 250mm/s</li>
+  <li>Khổ giấy 80mm, đường kính cuộn tối đa 83mm</li>
+  <li>3 cổng kết nối: USB, Serial, Ethernet LAN</li>
+  <li>Tự động cắt giấy (auto-cutter)</li>
+  <li>Hỗ trợ in logo, QR code, mã vạch</li>
+</ul>`,
+      `<p><strong>Epson TM-T82III Thermal Receipt Printer</strong></p>
+<p>Epson TM-T82III thermal receipt printer for POS, banking and retail. 250mm/s print speed, 80mm standard paper, multi-interface USB + Serial + LAN. Compatible with ESC/POS and popular POS software.</p>
+<ul>
+  <li>250mm/s thermal print speed</li>
+  <li>80mm paper width, max 83mm roll diameter</li>
+  <li>3 interfaces: USB, Serial, Ethernet LAN</li>
+  <li>Auto-cutter for clean receipt cuts</li>
+  <li>Logo, QR code, and barcode printing support</li>
+</ul>`,
       [
         { label: "Tốc độ in", labelEn: "Print speed", value: "250 mm/s", valueEn: "250 mm/s" },
         { label: "Khổ giấy", labelEn: "Paper width", value: "80mm", valueEn: "80mm" },
@@ -539,10 +659,26 @@ async function seed() {
       "Thiết bị ngân hàng", "ngan-hang",
       "Kiểm tra tiền giả", "#0f4f9e", "🔍",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/may-kiem-tra-tien-gia-oudis.svg"],
       ["https://oudis.vn/wp-content/uploads/2021/03/may-kiem-tra-tien-gia-9988t.jpg"],
-      "<p>Oudis 9988T, kiểm tra tiền giả bằng UV + MG + WM + IR, đèn LED trắng, nhỏ gọn để bàn.</p>",
-      "<p>Oudis 9988T, counterfeit detection via UV + MG + WM + IR, white LED light, compact desktop design.</p>",
+      `<p><strong>Máy kiểm tra tiền giả Oudis 9988T</strong></p>
+<p>Máy kiểm tra tiền giả để bàn Oudis 9988T với 4 phương pháp kiểm tra đồng thời: UV (tia cực tím), MG (từ tính), WM (watermark – hình chìm) và IR (hồng ngoại). Thiết kế nhỏ gọn, đèn LED trắng giúp kiểm tra hình ảnh chi tiết trên tờ tiền.</p>
+<ul>
+  <li>4 phương pháp kiểm tra: UV + MG + WM + IR</li>
+  <li>Đèn LED trắng kiểm tra hoa văn và hình ảnh</li>
+  <li>Thiết kế nhỏ gọn, đặt vừa mọi quầy giao dịch</li>
+  <li>Không cần cài đặt, cắm là dùng ngay</li>
+  <li>Kiểm tra được VND, USD, EUR và nhiều loại tiền khác</li>
+</ul>`,
+      `<p><strong>Oudis 9988T Counterfeit Detector</strong></p>
+<p>Compact desktop counterfeit detector with simultaneous 4-method verification: UV (ultraviolet), MG (magnetic), WM (watermark) and IR (infrared). White LED for detailed banknote inspection.</p>
+<ul>
+  <li>4-method detection: UV + MG + WM + IR</li>
+  <li>White LED light for pattern and image inspection</li>
+  <li>Compact design fits any transaction counter</li>
+  <li>Plug-and-use, no installation required</li>
+  <li>Detects VND, USD, EUR and other currencies</li>
+</ul>`,
       [
         { label: "Phương pháp", labelEn: "Detection method", value: "UV + MG + WM + IR", valueEn: "UV + MG + WM + IR" },
         { label: "Đèn", labelEn: "Light", value: "UV + LED trắng", valueEn: "UV + white LED" },
@@ -561,10 +697,26 @@ async function seed() {
       "Thiết bị ngân hàng", "ngan-hang",
       "QMS", "#0f4f9e", "📋",
       "linear-gradient(135deg,#e8f0fb,#d0e4f8)",
-      [],
+      ["/images/products/davisoft-qms-pro.svg"],
       ["https://davisoft.vn/wp-content/uploads/2020/07/qms-pro.jpg"],
-      "<p>Hệ thống quản lý xếp hàng DaviSoft QMS Pro, màn hình LED đa chiều, kết nối mạng LAN, phần mềm quản lý.</p>",
-      "<p>DaviSoft QMS Pro queue management system, multi-screen LED display, LAN network connection, management software.</p>",
+      `<p><strong>DaviSoft QMS Pro — Hệ thống quản lý xếp hàng</strong></p>
+<p>Giải pháp quản lý hàng đợi toàn diện DaviSoft QMS Pro dành cho ngân hàng và tổ chức tài chính. Bao gồm máy lấy số, màn hình LED đa chiều, phần mềm quản lý và báo cáo thống kê thời gian thực. Kết nối LAN/WiFi, dễ mở rộng quy mô.</p>
+<ul>
+  <li>Máy lấy số in vé tự động, hiển thị thông tin đầy đủ</li>
+  <li>Màn hình LED đa chiều hiển thị số thứ tự tại nhiều quầy</li>
+  <li>Phần mềm quản lý trên PC/tablet theo dõi thời gian thực</li>
+  <li>Báo cáo thống kê: thời gian chờ, số lượt phục vụ/ngày</li>
+  <li>Mở rộng không giới hạn số quầy và màn hình</li>
+</ul>`,
+      `<p><strong>DaviSoft QMS Pro — Queue Management System</strong></p>
+<p>Comprehensive DaviSoft QMS Pro queue management solution for banks and financial institutions. Includes ticket dispenser, multi-directional LED displays, management software, and real-time reporting. LAN/WiFi connected, easily scalable.</p>
+<ul>
+  <li>Automatic ticket dispenser with full information printout</li>
+  <li>Multi-directional LED displays at multiple service counters</li>
+  <li>PC/tablet management software for real-time monitoring</li>
+  <li>Statistical reports: wait times, daily service counts</li>
+  <li>Unlimited expansion of counters and displays</li>
+</ul>`,
       [
         { label: "Kết nối", labelEn: "Connection", value: "LAN / WiFi", valueEn: "LAN / WiFi" },
         { label: "Màn hình", labelEn: "Display", value: "LED đa chiều", valueEn: "Multi-directional LED" },
@@ -584,10 +736,28 @@ async function seed() {
       "Giải pháp phần mềm", "giai-phap-phan-mem",
       "OS", "#0078d4", "🪟",
       "linear-gradient(135deg,#e0f0ff,#c8e4ff)",
-      [],
+      ["/images/products/windows-11-pro.svg"],
       ["https://cdn.mos.cms.futurecdn.net/3Aa6RXCJFDgeFgGGfzSEeN.jpg"],
-      "<p>Windows 11 Pro bản quyền, hỗ trợ doanh nghiệp, Active Directory, BitLocker, Remote Desktop.</p>",
-      "<p>Genuine Windows 11 Pro license, enterprise support, Active Directory, BitLocker, Remote Desktop.</p>",
+      `<p><strong>Windows 11 Pro — Bản quyền chính hãng</strong></p>
+<p>Windows 11 Pro bản quyền Microsoft chính hãng, phiên bản doanh nghiệp với đầy đủ tính năng bảo mật và quản trị. Phù hợp cho doanh nghiệp vừa và nhỏ cần quản lý tập trung, bảo mật dữ liệu và kết nối từ xa.</p>
+<ul>
+  <li>Hỗ trợ kết nối Active Directory và Azure AD</li>
+  <li>BitLocker mã hóa toàn bộ ổ đĩa bảo vệ dữ liệu</li>
+  <li>Remote Desktop cho phép truy cập từ xa</li>
+  <li>Hyper-V ảo hóa tích hợp sẵn</li>
+  <li>Windows Sandbox chạy ứng dụng an toàn</li>
+  <li>Bản quyền vĩnh viễn, kích hoạt 1 lần dùng mãi mãi</li>
+</ul>`,
+      `<p><strong>Windows 11 Pro — Genuine License</strong></p>
+<p>Genuine Microsoft Windows 11 Pro license with full enterprise features for security and management. Ideal for SMBs needing centralized management, data security, and remote access.</p>
+<ul>
+  <li>Active Directory and Azure AD domain join support</li>
+  <li>BitLocker full-disk encryption for data protection</li>
+  <li>Remote Desktop Protocol (RDP) for remote access</li>
+  <li>Built-in Hyper-V virtualization</li>
+  <li>Windows Sandbox for safe app testing</li>
+  <li>Perpetual license, activate once, use forever</li>
+</ul>`,
       [
         { label: "Phiên bản", labelEn: "Version", value: "Windows 11 Pro", valueEn: "Windows 11 Pro" },
         { label: "Loại", labelEn: "Type", value: "Bản quyền vĩnh viễn", valueEn: "Perpetual license" },
@@ -606,10 +776,28 @@ async function seed() {
       "Giải pháp phần mềm", "giai-phap-phan-mem",
       "Antivirus", "#00a651", "🛡️",
       "linear-gradient(135deg,#e8fff0,#d0ffe0)",
-      [],
+      ["/images/products/kaspersky-internet-security.svg"],
       ["https://www.kaspersky.com/content/en-global/images/repository/isc/2020/kaspersky-internet-security-box.png"],
-      "<p>Kaspersky Internet Security, bảo vệ toàn diện chống virus, malware, phishing, ransomware. 1 năm bản quyền.</p>",
-      "<p>Kaspersky Internet Security, comprehensive protection against viruses, malware, phishing, ransomware. 1-year license.</p>",
+      `<p><strong>Kaspersky Internet Security — Bảo vệ toàn diện</strong></p>
+<p>Kaspersky Internet Security cung cấp bảo vệ đa lớp chống lại virus, spyware, ransomware, phishing và các mối đe dọa mạng hiện đại. Được đánh giá cao nhất trong các bài kiểm tra độc lập AV-TEST và AV-Comparatives. Giao diện thân thiện, hiệu suất hệ thống ảnh hưởng tối thiểu.</p>
+<ul>
+  <li>Bảo vệ thời gian thực chống virus và malware</li>
+  <li>Anti-ransomware ngăn chặn mã hóa dữ liệu trái phép</li>
+  <li>Anti-phishing bảo vệ khi duyệt web và email</li>
+  <li>VPN miễn phí 200MB/ngày tích hợp</li>
+  <li>Quản lý mật khẩu và bảo vệ thanh toán trực tuyến</li>
+  <li>Bản quyền 1 năm / 1 thiết bị, gia hạn dễ dàng</li>
+</ul>`,
+      `<p><strong>Kaspersky Internet Security — Comprehensive Protection</strong></p>
+<p>Kaspersky Internet Security delivers multi-layer protection against viruses, spyware, ransomware, phishing, and modern cyber threats. Top-rated by independent AV-TEST and AV-Comparatives. Minimal system performance impact.</p>
+<ul>
+  <li>Real-time protection against viruses and malware</li>
+  <li>Anti-ransomware preventing unauthorized data encryption</li>
+  <li>Anti-phishing protection during browsing and email</li>
+  <li>Free built-in VPN 200MB/day</li>
+  <li>Password manager and online payment protection</li>
+  <li>1-year / 1-device license, easy renewal</li>
+</ul>`,
       [
         { label: "Loại", labelEn: "Type", value: "Internet Security", valueEn: "Internet Security" },
         { label: "Thời hạn", labelEn: "Duration", value: "1 năm", valueEn: "1 year" },
@@ -628,10 +816,28 @@ async function seed() {
       "Giải pháp phần mềm", "giai-phap-phan-mem",
       "Office", "#d83b01", "📊",
       "linear-gradient(135deg,#fff0e8,#ffe0d0)",
-      [],
+      ["/images/products/microsoft-office-365.svg"],
       ["https://store-images.s-microsoft.com/image/apps.31571.9007199266245523.b389292a-fa67-4b5c-a534-5f4a74b81e81.bc9c5b58-9c67-4f5c-a53b-7dbd0e20ca58"],
-      "<p>Microsoft 365 Business, bộ ứng dụng Word/Excel/PowerPoint/Teams, 1TB OneDrive, 1 người dùng/năm.</p>",
-      "<p>Microsoft 365 Business, Word/Excel/PowerPoint/Teams suite, 1TB OneDrive, 1 user/year.</p>",
+      `<p><strong>Microsoft 365 Business — Gói ứng dụng văn phòng</strong></p>
+<p>Microsoft 365 Business cung cấp bộ ứng dụng văn phòng đầy đủ Word, Excel, PowerPoint, Outlook, Teams cùng 1TB lưu trữ OneDrive. Luôn được cập nhật phiên bản mới nhất, hỗ trợ cộng tác nhóm và làm việc từ xa hiệu quả.</p>
+<ul>
+  <li>Word, Excel, PowerPoint, OneNote — phiên bản mới nhất</li>
+  <li>Microsoft Teams chat, gọi video và họp trực tuyến</li>
+  <li>1TB OneDrive lưu trữ đám mây cho mỗi người dùng</li>
+  <li>Outlook email client chuyên nghiệp</li>
+  <li>Cài đặt trên tối đa 5 thiết bị (PC, Mac, tablet, điện thoại)</li>
+  <li>Bản quyền 1 năm / 1 người dùng, cập nhật liên tục</li>
+</ul>`,
+      `<p><strong>Microsoft 365 Business — Office Suite</strong></p>
+<p>Microsoft 365 Business provides a complete suite of Word, Excel, PowerPoint, Outlook, Teams plus 1TB OneDrive storage. Always up-to-date with the latest version, supports team collaboration and remote work.</p>
+<ul>
+  <li>Word, Excel, PowerPoint, OneNote — always latest version</li>
+  <li>Microsoft Teams for chat, video calls, and online meetings</li>
+  <li>1TB OneDrive cloud storage per user</li>
+  <li>Professional Outlook email client</li>
+  <li>Install on up to 5 devices (PC, Mac, tablet, phone)</li>
+  <li>1-year / 1-user license, continuously updated</li>
+</ul>`,
       [
         { label: "Ứng dụng", labelEn: "Apps", value: "Word, Excel, PowerPoint, Teams", valueEn: "Word, Excel, PowerPoint, Teams" },
         { label: "Lưu trữ", labelEn: "Storage", value: "1TB OneDrive", valueEn: "1TB OneDrive" },

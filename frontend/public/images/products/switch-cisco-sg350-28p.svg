@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f0fb"/>
+      <stop offset="100%" style="stop-color:#d0e4f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Switch body -->
+  <rect x="30" y="150" width="340" height="110" rx="6" fill="#1a1a2e"/>
+  <rect x="34" y="154" width="332" height="102" rx="4" fill="#0f0f1f"/>
+  <!-- Rack ears -->
+  <rect x="30" y="150" width="18" height="110" rx="3" fill="#2a2a3e"/>
+  <rect x="352" y="150" width="18" height="110" rx="3" fill="#2a2a3e"/>
+  <!-- Port row 1: 24 PoE ports -->
+  <g fill="#1a3a5c">
+    <text x="54" y="172" font-family="Arial,sans-serif" font-size="7" fill="#4fc3f7">1-12</text>
+    <!-- Ports row 1 -->
+    <rect x="54" y="175" width="12" height="16" rx="2"/>
+    <rect x="70" y="175" width="12" height="16" rx="2"/>
+    <rect x="86" y="175" width="12" height="16" rx="2"/>
+    <rect x="102" y="175" width="12" height="16" rx="2"/>
+    <rect x="118" y="175" width="12" height="16" rx="2"/>
+    <rect x="134" y="175" width="12" height="16" rx="2"/>
+    <rect x="150" y="175" width="12" height="16" rx="2"/>
+    <rect x="166" y="175" width="12" height="16" rx="2"/>
+    <rect x="182" y="175" width="12" height="16" rx="2"/>
+    <rect x="198" y="175" width="12" height="16" rx="2"/>
+    <rect x="214" y="175" width="12" height="16" rx="2"/>
+    <rect x="230" y="175" width="12" height="16" rx="2"/>
+  </g>
+  <!-- PoE indicators (green LEDs) -->
+  <g fill="#00e676">
+    <circle cx="60" cy="173" r="2"/>
+    <circle cx="76" cy="173" r="2"/>
+    <circle cx="92" cy="173" r="2"/>
+    <circle cx="108" cy="173" r="2"/>
+    <circle cx="124" cy="173" r="2"/>
+    <circle cx="140" cy="173" r="2"/>
+    <circle cx="156" cy="173" r="2"/>
+    <circle cx="172" cy="173" r="2"/>
+    <circle cx="188" cy="173" r="2"/>
+    <circle cx="204" cy="173" r="2"/>
+    <circle cx="220" cy="173" r="2"/>
+    <circle cx="236" cy="173" r="2"/>
+  </g>
+  <!-- Port row 2: 13-24 -->
+  <g fill="#1a3a5c">
+    <text x="54" y="205" font-family="Arial,sans-serif" font-size="7" fill="#4fc3f7">13-24</text>
+    <rect x="54" y="208" width="12" height="16" rx="2"/>
+    <rect x="70" y="208" width="12" height="16" rx="2"/>
+    <rect x="86" y="208" width="12" height="16" rx="2"/>
+    <rect x="102" y="208" width="12" height="16" rx="2"/>
+    <rect x="118" y="208" width="12" height="16" rx="2"/>
+    <rect x="134" y="208" width="12" height="16" rx="2"/>
+    <rect x="150" y="208" width="12" height="16" rx="2"/>
+    <rect x="166" y="208" width="12" height="16" rx="2"/>
+    <rect x="182" y="208" width="12" height="16" rx="2"/>
+    <rect x="198" y="208" width="12" height="16" rx="2"/>
+    <rect x="214" y="208" width="12" height="16" rx="2"/>
+    <rect x="230" y="208" width="12" height="16" rx="2"/>
+  </g>
+  <!-- SFP uplink ports -->
+  <g fill="#0d47a1">
+    <rect x="258" y="175" width="20" height="16" rx="2"/>
+    <rect x="282" y="175" width="20" height="16" rx="2"/>
+    <rect x="258" y="208" width="20" height="16" rx="2"/>
+    <rect x="282" y="208" width="20" height="16" rx="2"/>
+  </g>
+  <text x="268" y="202" font-family="Arial,sans-serif" font-size="7" fill="#90caf9" text-anchor="middle">SFP</text>
+  <text x="292" y="202" font-family="Arial,sans-serif" font-size="7" fill="#90caf9" text-anchor="middle">SFP</text>
+  <!-- Power/status LEDs -->
+  <circle cx="318" cy="178" r="5" fill="#00e676"/>
+  <circle cx="332" cy="178" r="5" fill="#ff9800"/>
+  <text x="325" y="194" font-family="Arial,sans-serif" font-size="6" fill="#888" text-anchor="middle">PWR SYS</text>
+  <!-- Cisco label -->
+  <text x="315" y="222" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#1e88e5" text-anchor="middle">CISCO</text>
+  <!-- Bottom info -->
+  <rect x="0" y="288" width="400" height="112" fill="rgba(13,30,60,0.95)"/>
+  <text x="200" y="314" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle">Cisco SG350-28P</text>
+  <text x="200" y="334" font-family="Arial,sans-serif" font-size="12" fill="#90caf9" text-anchor="middle">24-Port Gigabit PoE+ Managed Switch</text>
+  <text x="200" y="352" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Total PoE: 195W · 4 SFP Combo Ports</text>
+  <text x="200" y="370" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Web Managed · VLAN · QoS · ACL</text>
+  <text x="200" y="388" font-family="Arial,sans-serif" font-size="11" fill="#4fc3f7" text-anchor="middle">Bảo hành trọn đời</text>
+</svg>

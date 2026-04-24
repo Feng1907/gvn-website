@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5"/>
+      <stop offset="100%" style="stop-color:#e0e0e0"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#424242"/>
+      <stop offset="100%" style="stop-color:#212121"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Machine body -->
+  <rect x="80" y="80" width="240" height="220" rx="10" fill="url(#body)"/>
+  <rect x="85" y="85" width="230" height="210" rx="8" fill="#2e2e2e"/>
+  <!-- LED display -->
+  <rect x="100" y="100" width="200" height="55" rx="5" fill="#000"/>
+  <rect x="104" y="104" width="192" height="47" rx="3" fill="#001800"/>
+  <text x="200" y="120" font-family="Courier New,monospace" font-size="11" fill="#00cc00" text-anchor="middle">RIBAO  BC-2000V</text>
+  <text x="200" y="140" font-family="Courier New,monospace" font-size="24" font-weight="bold" fill="#00ff00" text-anchor="middle">1000</text>
+  <!-- Input hopper slot -->
+  <rect x="110" y="165" width="180" height="12" rx="3" fill="#1a1a1a"/>
+  <rect x="115" y="167" width="170" height="8" rx="2" fill="#111"/>
+  <text x="200" y="178" font-family="Arial,sans-serif" font-size="8" fill="#888" text-anchor="middle">INPUT HOPPER</text>
+  <!-- Buttons -->
+  <g>
+    <rect x="100" y="188" width="45" height="22" rx="4" fill="#1565c0"/>
+    <text x="122" y="203" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">START</text>
+    <rect x="153" y="188" width="45" height="22" rx="4" fill="#1565c0"/>
+    <text x="175" y="203" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">STOP</text>
+    <rect x="206" y="188" width="45" height="22" rx="4" fill="#c62828"/>
+    <text x="228" y="203" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">RESET</text>
+    <rect x="259" y="188" width="25" height="22" rx="4" fill="#388e3c"/>
+    <text x="271" y="203" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">UV</text>
+  </g>
+  <!-- Output tray -->
+  <rect x="100" y="220" width="200" height="30" rx="4" fill="#1a1a1a"/>
+  <rect x="104" y="224" width="192" height="22" rx="2" fill="#111"/>
+  <text x="200" y="239" font-family="Arial,sans-serif" font-size="8" fill="#888" text-anchor="middle">OUTPUT STACKER (300 tờ)</text>
+  <!-- Speed indicator -->
+  <rect x="100" y="260" width="200" height="22" rx="4" fill="#1a1a1a"/>
+  <text x="200" y="276" font-family="Arial,sans-serif" font-size="9" fill="#00cc00" text-anchor="middle">1000 tờ/phút  ·  UV + MG + IR</text>
+  <!-- Bottom info -->
+  <rect x="0" y="315" width="400" height="85" fill="rgba(0,50,0,0.9)"/>
+  <text x="200" y="339" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle">RIBAO BC-2000V</text>
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="12" fill="#a5d6a7" text-anchor="middle">Máy đếm tiền phát hiện tiền giả</text>
+  <text x="200" y="376" font-family="Arial,sans-serif" font-size="11" fill="#81c784" text-anchor="middle">UV · MG · IR · 1000 tờ/phút</text>
+  <text x="200" y="394" font-family="Arial,sans-serif" font-size="10" fill="#66bb6a" text-anchor="middle">Bảo hành 12 tháng</text>
+</svg>
