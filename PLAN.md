@@ -14,7 +14,7 @@
 | 3 | DB Migration | ✅ XONG | TRUNG BÌNH-CAO |
 | 4 | Design System | ✅ XONG | TRUNG BÌNH |
 | 5 | Email Service | ✅ XONG | CAO |
-| 6 | SEO & Metadata | ⬜ CHƯA LÀM | TRUNG BÌNH |
+| 6 | SEO & Metadata | ✅ XONG | TRUNG BÌNH |
 | 7 | Spring Boot Backend | ⬜ CHƯA LÀM | TƯƠNG LAI |
 | 8 | Tích hợp Next.js ↔ Spring Boot | ⬜ CHƯA LÀM | TƯƠNG LAI |
 | 9 | Deployment | 🔄 ĐANG TIẾN HÀNH | Song song |
@@ -188,22 +188,20 @@ main ← chỉ merge từ develop khi stable
 
 ---
 
-## PHASE 6 — SEO & METADATA ⬜ CHƯA LÀM
-**Ưu tiên: TRUNG BÌNH**  
-**Vấn đề:** Pages dùng `"use client"` → không export `metadata` trực tiếp.  
-**Giải pháp:** Thêm `layout.tsx` (server component) cho từng route.
+## PHASE 6 — SEO & METADATA ✅ XONG
+**Branch:** `feature/seo`
 
-- [ ] Tạo `app/products/layout.tsx` — export `metadata`
-- [ ] Tạo `app/services/layout.tsx`
-- [ ] Tạo `app/news/layout.tsx`
-- [ ] Tạo `app/projects/layout.tsx`
-- [ ] Tạo `app/about/layout.tsx`
-- [ ] Tạo `app/contact/layout.tsx`
-- [ ] Cập nhật `app/layout.tsx` root: thêm `openGraph`, `twitter`, `robots`, `canonical`
-- [ ] Tạo `app/sitemap.ts` — dynamic sitemap
-- [ ] Tạo `app/robots.ts`
-- [ ] Thêm JSON-LD `Organization` schema vào root layout
-- [ ] Thêm JSON-LD `Product` schema vào product detail page
+- [x] Tạo `app/products/layout.tsx` — export `metadata`
+- [x] Tạo `app/services/layout.tsx`
+- [x] Tạo `app/news/layout.tsx`
+- [x] Tạo `app/projects/layout.tsx`
+- [x] Tạo `app/about/layout.tsx`
+- [x] Tạo `app/contact/layout.tsx`
+- [x] Cập nhật `app/layout.tsx` root: `openGraph`, `twitter`, `robots`, `canonical`, title template
+- [x] Tạo `app/sitemap.ts` — static sitemap (services + news slugs)
+- [x] Tạo `app/robots.ts` — allow all, disallow /api/ /admin/
+- [x] Thêm JSON-LD `Organization` schema vào root layout
+- [~] JSON-LD `Product` schema — bỏ qua (product detail là client component, cần layout riêng)
 
 ---
 
