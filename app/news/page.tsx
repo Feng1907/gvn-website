@@ -1,10 +1,25 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "../components/LangContext";
 import styles from "./page.module.css";
 
-const articles = [
+interface ArticleItem {
+  id: number | string;
+  slug: string;
+  category: string;
+  categoryEn: string;
+  date: string;
+  readTime: number;
+  emoji: string;
+  bg: string;
+  title: string;
+  titleEn: string;
+  excerpt: string;
+  excerptEn: string;
+}
+
+const hardcodedArticles: ArticleItem[] = [
   {
     id: 1,
     slug: "chien-luoc-an-ninh-vat-ly",
@@ -91,8 +106,6 @@ const articles = [
   },
 ];
 
-const recentPosts = articles.slice(0, 4);
-
 function formatDate(dateStr: string, lang: string) {
   const d = new Date(dateStr);
   if (lang === "vi") {
@@ -102,11 +115,39 @@ function formatDate(dateStr: string, lang: string) {
 }
 
 export default function NewsPage() {
-  const { lang, t } = useLang();
+  const { lang } = useLang();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [apiArticles, setApiArticles] = useState<ArticleItem[] | null>(null);
 
   const isVi = lang === "vi";
+
+  useEffect(() => {
+    fetch("/api/news?published=true&limit=20")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        if (data?.success && Array.isArray(data.data?.items)) {
+          const items: ArticleItem[] = data.data.items.map((a: Record<string, unknown>, i: number) => ({
+            id: (a._id as string) || i,
+            slug: a.slug as string,
+            category: a.category as string,
+            categoryEn: (a.categoryEn as string) || a.category as string,
+            date: a.createdAt ? (a.createdAt as string).slice(0, 10) : "",
+            readTime: (a.readTime as number) || 5,
+            emoji: (a.emoji as string) || "📰",
+            bg: (a.bg as string) || "linear-gradient(135deg,#1a6fc4,#00b4d8)",
+            title: a.title as string,
+            titleEn: (a.titleEn as string) || a.title as string,
+            excerpt: (a.excerpt as string) || "",
+            excerptEn: (a.excerptEn as string) || (a.excerpt as string) || "",
+          }));
+          setApiArticles(items);
+        }
+      })
+      .catch(() => { /* fallback sang hardcode */ });
+  }, []);
+
+  const articles = apiArticles ?? hardcodedArticles;
 
   const categories = [...new Set(articles.map(a => isVi ? a.category : a.categoryEn))];
 
@@ -250,6 +291,7 @@ export default function NewsPage() {
                   </span>
                 </button>
               ))}
+
             </div>
           </div>
 
@@ -257,7 +299,7 @@ export default function NewsPage() {
           <div className={styles.widget}>
             <h3 className={styles.widgetTitle}>{isVi ? "BÀI VIẾT MỚI" : "RECENT POSTS"}</h3>
             <div className={styles.recentList}>
-              {recentPosts.map(post => (
+              {articles.slice(0, 4).map(post => (
                 <Link key={post.id} href={`/news/${post.slug}`} className={styles.recentItem}>
                   <div className={styles.recentIcon} style={{ background: post.bg }}>
                     {post.emoji}
