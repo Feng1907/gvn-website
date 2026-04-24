@@ -97,6 +97,22 @@
 }
 .submitBtn:hover::before { left: 100%; }
 
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.errorMsg {
+  color: #f87171;
+  font-size: 0.875rem;
+  padding: 10px 14px;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
 /* ===== INFO SECTION ===== */
 .infoSection {
   background: rgba(255, 255, 255, 0.04);

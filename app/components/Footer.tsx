@@ -1,20 +1,22 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const quickLinks = [
-  { label: "Giới thiệu", href: "#about" },
-  { label: "Dịch vụ",   href: "#services" },
-  { label: "Sản phẩm",  href: "#products" },
-  { label: "Dự án",     href: "#projects" },
-  { label: "Tin tức",   href: "#" },
-  { label: "Liên hệ",   href: "#" },
+  { label: "Giới thiệu", href: "/about" },
+  { label: "Dịch vụ",   href: "/services" },
+  { label: "Sản phẩm",  href: "/products" },
+  { label: "Dự án",     href: "/projects" },
+  { label: "Tin tức",   href: "/news" },
+  { label: "Liên hệ",   href: "/contact" },
 ];
 
 const contacts = [
-  { icon: "📍", text: "123 Nguyễn Văn Linh, Q.7, TP.HCM" },
-  { icon: "📞", text: "0123 456 789" },
-  { icon: "✉️", text: "info@gvntmc.com" },
+  { icon: "📍", text: "51 Đường số 9, KDC Him Lam, P. Tân Hưng, Q.7, TP.HCM" },
+  { icon: "📍", text: "F9 Tòa nhà Kim Ánh, 78/1 Duy Tân, Cầu Giấy, Hà Nội" },
+  { icon: "📞", text: "028 62515094 – 091 970 4433" },
+  { icon: "✉️", text: "support@gvntmc.com" },
   { icon: "🕐", text: "Thứ 2 – Thứ 7: 8:00 – 17:30" },
 ];
 
@@ -70,7 +72,7 @@ export default function Footer() {
             <h4 className={styles.colTitle}>Liên kết nhanh</h4>
             <nav className={styles.links}>
               {quickLinks.map((l) => (
-                <a key={l.label} href={l.href} className={styles.link}>{l.label}</a>
+                <Link key={l.label} href={l.href} className={styles.link}>{l.label}</Link>
               ))}
             </nav>
           </div>

@@ -4,13 +4,13 @@ import { getDb } from "../../../../lib/mongodb";
 import { ok, notFound, badRequest, serverError } from "../../../../lib/apiHelper";
 import { Article } from "../../../../lib/types";
 
-type Params = { params: { id: string } };
+type Context = { params: Promise<{ id: string }> };
 
 // GET /api/news/[id]  — trả về full content (kể cả content HTML)
-export async function GET(_req: NextRequest, { params }: Params) {
+export async function GET(_req: NextRequest, { params }: Context) {
   try {
     const db = await getDb();
-    const { id } = params;
+    const { id } = await params;
 
     let article: Article | null = null;
 
@@ -29,11 +29,11 @@ export async function GET(_req: NextRequest, { params }: Params) {
 }
 
 // PUT /api/news/[id]
-export async function PUT(req: NextRequest, { params }: Params) {
+export async function PUT(req: NextRequest, { params }: Context) {
   try {
     const db   = await getDb();
     const body = await req.json();
-    const { id } = params;
+    const { id } = await params;
 
     if (!ObjectId.isValid(id)) return badRequest("ID không hợp lệ");
 
@@ -56,10 +56,10 @@ export async function PUT(req: NextRequest, { params }: Params) {
 }
 
 // DELETE /api/news/[id]
-export async function DELETE(_req: NextRequest, { params }: Params) {
+export async function DELETE(_req: NextRequest, { params }: Context) {
   try {
     const db = await getDb();
-    const { id } = params;
+    const { id } = await params;
 
     if (!ObjectId.isValid(id)) return badRequest("ID không hợp lệ");
 

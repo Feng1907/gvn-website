@@ -4,15 +4,14 @@ import { getDb } from "../../../../lib/mongodb";
 import { ok, notFound, badRequest, serverError } from "../../../../lib/apiHelper";
 import { Product } from "../../../../lib/types";
 
-type Params = { params: { id: string } };
+type Context = { params: Promise<{ id: string }> };
 
 // GET /api/products/[id]  — lấy theo _id hoặc slug
-export async function GET(_req: NextRequest, { params }: Params) {
+export async function GET(_req: NextRequest, { params }: Context) {
   try {
     const db = await getDb();
-    const { id } = params;
+    const { id } = await params;
 
-    // Thử tìm theo ObjectId trước, nếu không hợp lệ thì tìm theo slug
     let product: Product | null = null;
 
     if (ObjectId.isValid(id)) {
@@ -35,11 +34,11 @@ export async function GET(_req: NextRequest, { params }: Params) {
 }
 
 // PUT /api/products/[id]  — cập nhật sản phẩm
-export async function PUT(req: NextRequest, { params }: Params) {
+export async function PUT(req: NextRequest, { params }: Context) {
   try {
     const db   = await getDb();
     const body = await req.json();
-    const { id } = params;
+    const { id } = await params;
 
     if (!ObjectId.isValid(id)) return badRequest("ID không hợp lệ");
 
@@ -47,7 +46,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
       ...body,
       updatedAt: new Date(),
     };
-    delete update._id; // Không cho phép update _id
+    delete update._id;
 
     const result = await db
       .collection<Product>("products")
@@ -65,10 +64,10 @@ export async function PUT(req: NextRequest, { params }: Params) {
 }
 
 // DELETE /api/products/[id]
-export async function DELETE(_req: NextRequest, { params }: Params) {
+export async function DELETE(_req: NextRequest, { params }: Context) {
   try {
     const db = await getDb();
-    const { id } = params;
+    const { id } = await params;
 
     if (!ObjectId.isValid(id)) return badRequest("ID không hợp lệ");
 
