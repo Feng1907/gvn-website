@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { getDb } from "../../../lib/mongodb";
 import { ok, created, badRequest, serverError } from "../../../lib/apiHelper";
 import { Contact } from "../../../lib/types";
+import { sendContactNotification, sendContactConfirmation } from "../../../lib/email";
 
 // POST /api/contacts  — Gửi form liên hệ / yêu cầu báo giá
 export async function POST(req: NextRequest) {
@@ -33,6 +34,16 @@ export async function POST(req: NextRequest) {
     };
 
     const result = await db.collection<Contact>("contacts").insertOne(contact as Contact);
+
+    // Gửi email — thất bại không block response (fire-and-forget)
+    if (process.env.RESEND_API_KEY) {
+      const payload = { name: contact.name, email: contact.email, phone: contact.phone, company: contact.company, subject: contact.subject, message: contact.message };
+      Promise.all([
+        sendContactNotification(payload),
+        sendContactConfirmation(payload),
+      ]).catch(() => { /* email lỗi → vẫn lưu DB, không throw */ });
+    }
+
     return created({
       id: result.insertedId,
       message: "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong vòng 24 giờ.",

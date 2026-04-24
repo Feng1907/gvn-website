@@ -13,7 +13,7 @@
 | 2 | Trang Chi Tiết | ✅ XONG | CAO |
 | 3 | DB Migration | ✅ XONG | TRUNG BÌNH-CAO |
 | 4 | Design System | ✅ XONG | TRUNG BÌNH |
-| 5 | Email Service | ⬜ CHƯA LÀM | CAO |
+| 5 | Email Service | ✅ XONG | CAO |
 | 6 | SEO & Metadata | ⬜ CHƯA LÀM | TRUNG BÌNH |
 | 7 | Spring Boot Backend | ⬜ CHƯA LÀM | TƯƠNG LAI |
 | 8 | Tích hợp Next.js ↔ Spring Boot | ⬜ CHƯA LÀM | TƯƠNG LAI |
@@ -177,15 +177,14 @@ main ← chỉ merge từ develop khi stable
 
 ---
 
-## PHASE 5 — EMAIL SERVICE ⬜ CHƯA LÀM
-**Ưu tiên: CAO — Lead generation**  
-**Khuyến nghị: [Resend](https://resend.com)** (miễn phí 3000 email/tháng)
+## PHASE 5 — EMAIL SERVICE ✅ XONG
+**Branch:** `feature/email-service`
 
-- [ ] `npm install resend`
-- [ ] Thêm vào `.env.local`: `RESEND_API_KEY=re_xxx`, `NOTIFY_EMAIL=info@gvntmc.com`
-- [ ] Tạo `lib/email.ts`: `sendContactNotification()` + `sendContactConfirmation()`
-- [ ] Cập nhật `app/api/contacts/route.ts`: gọi email sau `insertOne`
-- [ ] Nguyên tắc: email thất bại → vẫn lưu DB và trả 201
+- [x] `npm install resend` (v6.12.2)
+- [x] Thêm hướng dẫn vào `.env.local`: `RESEND_API_KEY`, `NOTIFY_EMAIL`
+- [x] Tạo `lib/email.ts`: `sendContactNotification()` + `sendContactConfirmation()`
+- [x] Cập nhật `app/api/contacts/route.ts`: fire-and-forget email sau `insertOne`
+- [x] Email lỗi → vẫn lưu DB và trả 201 (Promise.all.catch)
 
 ---
 
