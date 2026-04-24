@@ -1,8 +1,22 @@
 'use client';
+import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useLang } from '@/components/LangContext';
 import styles from './projects.module.css';
+
+// Map title → slug cho link chi tiết
+const slugMap: Record<string, string> = {
+  "Thi công chuyển địa điểm chi nhánh và xây dựng hệ thống điện, mạng – Chi nhánh ngân hàng Shinhan": "shinhan-bank",
+  "Thi công hệ thống điện và mạng cho nhà máy Comet Vina": "comet-vina",
+  "Thi công hệ thống mạng, camera giám sát, loa cho nhà máy và văn phòng Chemtronics": "chemtronics",
+  "Thi công hệ thống mạng, camera giám sát (CCTV), loa cho văn phòng chi nhánh Busan": "busan",
+  "Thi công hệ thống điện, mạng cho Hyosung": "hyosung",
+  "Thi công hệ thống mạng và camera giám sát cho CJ Foods": "cjfoods",
+  "Lắp đặt tủ rack và hệ thống server room": "datacenter",
+  "Thi công hệ thống điện nhẹ cho công trình dân dụng": "construction",
+};
 
 export default function ProjectsPage() {
   const { t } = useLang();
@@ -47,20 +61,30 @@ export default function ProjectsPage() {
 
           {/* Grid */}
           <div className={styles.grid}>
-            {filtered.map((project, i) => (
-              <div key={i} className={styles.card}>
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className={styles.image}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  />
-                </div>
-                <h3 className={styles.title}>{project.title}</h3>
-              </div>
-            ))}
+            {filtered.map((project, i) => {
+              const slug = slugMap[project.title];
+              const CardWrapper = slug
+                ? ({ children }: { children: React.ReactNode }) => (
+                    <Link href={`/projects/${slug}`} className={styles.card}>{children}</Link>
+                  )
+                : ({ children }: { children: React.ReactNode }) => (
+                    <div className={styles.card}>{children}</div>
+                  );
+              return (
+                <CardWrapper key={i}>
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className={styles.image}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    />
+                  </div>
+                  <h3 className={styles.title}>{project.title}</h3>
+                </CardWrapper>
+              );
+            })}
           </div>
 
           {/* Load More */}

@@ -144,7 +144,7 @@ export default function NewsPage() {
 
           {/* Featured article */}
           {featured && (
-            <a href={`/news/${featured.slug}`} className={styles.featured}>
+            <Link href={`/news/${featured.slug}`} className={styles.featured}>
               <div className={styles.featuredImg} style={{ background: featured.bg }}>
                 <span className={styles.featuredEmoji}>{featured.emoji}</span>
                 <span className={styles.featuredBadge}>
@@ -170,13 +170,13 @@ export default function NewsPage() {
                   {isVi ? "Đọc thêm →" : "Read more →"}
                 </span>
               </div>
-            </a>
+            </Link>
           )}
 
           {/* Article grid */}
           <div className={styles.grid}>
             {rest.map(article => (
-              <a key={article.id} href={`/news/${article.slug}`} className={styles.card}>
+              <Link key={article.id} href={`/news/${article.slug}`} className={styles.card}>
                 <div className={styles.cardImg} style={{ background: article.bg }}>
                   <span className={styles.cardEmoji}>{article.emoji}</span>
                   <span className={styles.cardBadge}>
@@ -198,7 +198,7 @@ export default function NewsPage() {
                     {isVi ? "Xem thêm →" : "Read more →"}
                   </span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -258,7 +258,7 @@ export default function NewsPage() {
             <h3 className={styles.widgetTitle}>{isVi ? "BÀI VIẾT MỚI" : "RECENT POSTS"}</h3>
             <div className={styles.recentList}>
               {recentPosts.map(post => (
-                <a key={post.id} href={`/news/${post.slug}`} className={styles.recentItem}>
+                <Link key={post.id} href={`/news/${post.slug}`} className={styles.recentItem}>
                   <div className={styles.recentIcon} style={{ background: post.bg }}>
                     {post.emoji}
                   </div>
@@ -270,7 +270,7 @@ export default function NewsPage() {
                       {formatDate(post.date, lang)}
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
