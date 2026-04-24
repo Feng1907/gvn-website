@@ -15,7 +15,7 @@
 | 4 | Design System | ✅ XONG | TRUNG BÌNH |
 | 5 | Email Service | ✅ XONG | CAO |
 | 6 | SEO & Metadata | ✅ XONG | TRUNG BÌNH |
-| 7 | Spring Boot Backend | ⬜ CHƯA LÀM | TƯƠNG LAI |
+| 7 | Spring Boot Backend | ✅ XONG | TƯƠNG LAI |
 | 8 | Tích hợp Next.js ↔ Spring Boot | ⬜ CHƯA LÀM | TƯƠNG LAI |
 | 9 | Deployment | 🔄 ĐANG TIẾN HÀNH | Song song |
 | 10 | Admin Dashboard | ⬜ CHƯA LÀM | THẤP |
@@ -205,28 +205,34 @@ main ← chỉ merge từ develop khi stable
 
 ---
 
-## PHASE 7 — SPRING BOOT BACKEND ⬜ CHƯA LÀM
-**Ưu tiên: TƯƠNG LAI — Triển khai sau Phase 1–6**
+## PHASE 7 — SPRING BOOT BACKEND ✅ XONG
+**Branch:** `feature/spring-boot-init` | **Thư mục:** `backend/`
 
-### Cấu trúc Project (Repo riêng: `gvn-backend`)
+### Cấu trúc Project (`backend/src/main/java/com/gvntmc/backend/`)
 
 ```
-gvn-backend/src/main/java/com/gvntmc/backend/
-├── config/
-│   ├── CorsConfig.java         ← Allow localhost:3000 + gvntmc.com
-│   ├── MongoConfig.java        ← MongoDB Atlas connection
-│   └── SecurityConfig.java     ← JWT (Admin phase)
-├── controller/
-│   ├── ProductController.java  ← /api/v1/products
-│   ├── ServiceController.java  ← /api/v1/services
-│   ├── ProjectController.java  ← /api/v1/projects
-│   ├── ArticleController.java  ← /api/v1/news
-│   └── ContactController.java  ← /api/v1/contacts
-├── service/                    ← Business logic
-├── repository/                 ← MongoRepository<Entity, String>
-├── entity/                     ← @Document(collection="...")
-├── dto/response/ApiResponse.java   ← { success, data, error }
-└── exception/GlobalExceptionHandler.java
+✅ backend/
+├── pom.xml                     (Spring Boot 3.3.5, Java 21, Lombok, Security, Validation)
+├── src/main/resources/application.yml
+└── src/main/java/com/gvntmc/backend/
+    ├── GvnBackendApplication.java
+    ├── config/
+    │   ├── CorsConfig.java     ✅ Allow localhost:3000 + gvntmc.com
+    │   ├── MongoConfig.java    ✅ @EnableMongoAuditing
+    │   └── SecurityConfig.java ✅ Public endpoints, /admin/** → auth
+    ├── controller/
+    │   ├── ProductController   ✅ GET list/slug, POST/PUT/DELETE
+    │   ├── ServiceController   ✅ GET list/slug
+    │   ├── ProjectController   ✅ GET list/slug
+    │   ├── ArticleController   ✅ GET list/slug (/api/v1/news)
+    │   ├── ContactController   ✅ POST create, GET list (admin)
+    │   └── SearchController    ✅ GET /api/v1/search?q=...
+    ├── service/                ✅ Business logic cho tất cả entities
+    ├── repository/             ✅ MongoRepository cho 5 collections
+    ├── entity/                 ✅ Product, ServiceEntity, Article, Contact, Project
+    ├── dto/request/            ✅ ContactRequest (@Valid)
+    ├── dto/response/           ✅ ApiResponse<T>, PageResponse<T>
+    └── exception/              ✅ ResourceNotFoundException, GlobalExceptionHandler
 ```
 
 ### REST API Endpoints
