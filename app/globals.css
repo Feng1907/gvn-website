@@ -9,6 +9,7 @@
 }
 
 :root {
+  /* ── Legacy dark theme vars (keep for backward compat) ── */
   --blue:         #3b82f6;
   --blue-dark:    #1d4ed8;
   --blue-light:   #60a5fa;
@@ -29,6 +30,40 @@
   --border:       rgba(255, 255, 255, 0.12);
   --shadow:       0 8px 32px rgba(0, 0, 0, 0.45);
   --radius:       16px;
+
+  /* ── GVN Brand Color Tokens ── */
+  --gvn-primary-50:  #e8f2fb;
+  --gvn-primary-100: #d0e6f8;
+  --gvn-primary-400: #3d8fd5;
+  --gvn-primary-500: #1a6fc4;
+  --gvn-primary-600: #155aa0;
+  --gvn-primary-700: #0f4478;
+
+  --gvn-success: #10b981;
+  --gvn-warning: #f59e0b;
+  --gvn-error:   #ef4444;
+
+  /* Light Theme */
+  --gvn-light-bg:      #f8faff;
+  --gvn-light-surface: #ffffff;
+  --gvn-light-border:  #e0ecfa;
+  --gvn-light-text:    #1a2340;
+  --gvn-light-text-2:  #475569;
+
+  /* Spacing (8px grid) */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px;  --space-10: 40px; --space-12: 48px;
+  --space-16: 64px; --space-20: 80px;
+
+  /* Border Radius */
+  --radius-sm: 4px;  --radius-md: 8px;   --radius-lg: 16px;
+  --radius-xl: 20px; --radius-2xl: 24px; --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.18);
+  --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-blue: 0 4px 20px rgba(26, 111, 196, 0.35);
 }
 
 html { scroll-behavior: smooth; }
@@ -76,7 +111,7 @@ body::after {
 
 /* ── Shared Buttons ── */
 .btn-primary {
-  background: linear-gradient(135deg, var(--blue), var(--blue-light));
+  background: linear-gradient(135deg, var(--gvn-primary-500), var(--gvn-primary-400));
   color: white;
   border: none;
   padding: 12px 24px;
@@ -85,7 +120,7 @@ body::after {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: var(--shadow-blue);
   transition: all .25s;
   position: relative;
   overflow: hidden;
@@ -98,7 +133,7 @@ body::after {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
   transition: left .5s;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59, 130, 246, 0.55); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26, 111, 196, 0.55); }
 .btn-primary:hover::before { left: 100%; }
 
 .btn-orange {

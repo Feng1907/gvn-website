@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "@/components/LangContext";
 import styles from "./page.module.css";
 
@@ -154,6 +154,30 @@ const sortOptions = [
 // Fallback nếu ảnh bị lỗi load
 const FALLBACK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='160' viewBox='0 0 200 160'%3E%3Crect width='200' height='160' fill='%231e2535'/%3E%3Ctext x='100' y='88' text-anchor='middle' font-size='36' fill='%23334155'%3E📦%3C/text%3E%3C/svg%3E";
 
+// Fallback tạo slug từ tên sản phẩm (dùng khi API chưa sẵn sàng)
+function slugFromName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .slice(0, 80);
+}
+
+// Kiểu dữ liệu trả về từ API (tương thích allProducts để render)
+interface ApiProduct {
+  _id: string;
+  name: string;
+  slug: string;
+  category: string;
+  catSlug: string;
+  images: string[];
+  imageFallbacks: string[];
+  emoji: string;
+}
+
 export default function ProductsPage() {
   const { t } = useLang();
   const p = t.productsPage;
@@ -162,14 +186,53 @@ export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [page, setPage]                   = useState(1);
   const [sort, setSort]                   = useState("default");
-  const [imgErrors, setImgErrors]         = useState<Record<number, boolean>>({});
+  const [imgErrors, setImgErrors]         = useState<Record<string, boolean>>({});
+
+  // API state — graceful fallback sang hardcode nếu fetch thất bại
+  const [apiProducts, setApiProducts]     = useState<ApiProduct[] | null>(null);
+  const [apiLoading, setApiLoading]       = useState(true);
+
+  useEffect(() => {
+    fetch("/api/products?limit=50")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        if (data?.success && Array.isArray(data.data?.items)) {
+          setApiProducts(data.data.items);
+        }
+      })
+      .catch(() => { /* giữ null → dùng hardcode fallback */ })
+      .finally(() => setApiLoading(false));
+  }, []);
+
+  // Chuyển apiProducts sang cùng shape với allProducts để render chung
+  const productList = apiProducts
+    ? apiProducts.map(ap => ({
+        id: ap.slug,           // dùng slug làm key
+        slug: ap.slug,
+        cat: ap.category,
+        catSlug: ap.catSlug,
+        name: ap.name,
+        image: ap.images?.[0] || "",
+        fallback: ap.imageFallbacks?.[0] || "",
+        emoji: ap.emoji || "📦",
+      }))
+    : allProducts.map(p => ({
+        id: String(p.id),
+        slug: slugFromName(p.name),
+        cat: p.cat,
+        catSlug: p.catSlug,
+        name: p.name,
+        image: p.image,
+        fallback: "",
+        emoji: "📦",
+      }));
 
   let filtered = activeCategory
-    ? allProducts.filter(prod => prod.catSlug === activeCategory)
-    : allProducts;
+    ? productList.filter(prod => prod.catSlug === activeCategory)
+    : productList;
 
-  if (sort === "name_asc")  filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-  if (sort === "name_desc") filtered = [...filtered].sort((a, b) => b.name.localeCompare(a.name));
+  if (sort === "name_asc")  filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name, "vi"));
+  if (sort === "name_desc") filtered = [...filtered].sort((a, b) => b.name.localeCompare(a.name, "vi"));
 
   const total      = filtered.length;
   const totalPages = Math.ceil(total / PER_PAGE);
@@ -247,7 +310,13 @@ export default function ProductsPage() {
             </select>
           </div>
 
-          {visible.length === 0 ? (
+          {apiLoading ? (
+            <div className={styles.grid}>
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className={styles.cardSkeleton} />
+              ))}
+            </div>
+          ) : visible.length === 0 ? (
             <div className={styles.empty}>
               <span>📦</span>
               <p>Không có sản phẩm nào.</p>
@@ -255,18 +324,24 @@ export default function ProductsPage() {
           ) : (
             <div className={styles.grid}>
               {visible.map(prod => (
-                <Link href={`/san-pham/${prod.id}`} key={prod.id} className={styles.card}>
+                <Link href={`/products/${prod.slug}`} key={String(prod.id)} className={styles.card}>
                   <div className={styles.cardImgWrap}>
-                    <Image
-                      src={imgErrors[prod.id] ? FALLBACK : prod.image}
-                      alt={prod.name}
-                      fill
-                      className={styles.cardImg}
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                      style={{ objectFit: "contain", padding: "16px" }}
-                      onError={() => setImgErrors(prev => ({ ...prev, [prod.id]: true }))}
-                      unoptimized
-                    />
+                    {prod.image ? (
+                      <Image
+                        src={imgErrors[String(prod.id)] ? (prod.fallback || FALLBACK) : prod.image}
+                        alt={prod.name}
+                        fill
+                        className={styles.cardImg}
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                        style={{ objectFit: "contain", padding: "16px" }}
+                        onError={() => setImgErrors(prev => ({ ...prev, [String(prod.id)]: true }))}
+                        unoptimized
+                      />
+                    ) : (
+                      <span style={{ fontSize: 48, display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+                        {prod.emoji}
+                      </span>
+                    )}
                   </div>
                   <div className={styles.cardBody}>
                     <span className={styles.cardCat}>{prod.cat}</span>

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLang } from "../../components/LangContext";
 import styles from "./page.module.css";
@@ -244,7 +244,7 @@ function SmartImg({ src, fallback, alt, className, bg }: { src:string; fallback:
       {!failed
         // eslint-disable-next-line @next/next/no-img-element
         ? <img src={imgSrc} alt={alt} style={{width:"100%",height:"100%",objectFit:"contain",padding:"12px"}}
-            onError={() => { imgSrc===src && fallback ? setImgSrc(fallback) : setFailed(true); }} />
+            onError={() => { if (imgSrc === src && fallback) { setImgSrc(fallback); } else { setFailed(true); } }} />
         : <span style={{fontSize:48,display:"flex",alignItems:"center",justifyContent:"center",height:"100%"}}>🖥️</span>
       }
     </div>
@@ -254,8 +254,53 @@ function SmartImg({ src, fallback, alt, className, bg }: { src:string; fallback:
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const { lang } = useLang();
   const isVi = lang === "vi";
-  const productId = parseInt(params.id);
-  const product = getProduct(productId);
+  const slug = params.id;
+
+  // Thử fetch từ API, fallback sang productDatabase cũ nếu thất bại
+  const [apiProduct, setApiProduct] = useState<null | typeof productDatabase[1]>(null);
+  const [loading, setLoading]       = useState(true);
+  const [notFoundApi, setNotFoundApi] = useState(false);
+
+  useEffect(() => {
+    fetch(`/api/products/${slug}`)
+      .then(r => {
+        if (r.status === 404) { setNotFoundApi(true); return null; }
+        return r.ok ? r.json() : null;
+      })
+      .then(data => {
+        if (data?.success && data.data) {
+          const d = data.data;
+          setApiProduct({
+            id: 0,
+            name: d.name || "",
+            nameEn: d.nameEn || d.name || "",
+            category: d.category || "",
+            categoryEn: d.category || "",
+            categoryPath: ["Sản phẩm", d.category || ""],
+            categoryPathEn: ["Products", d.category || ""],
+            images: d.images || [],
+            imageFallbacks: d.imageFallbacks || [],
+            bg: d.bg || "#f8faff",
+            description: d.description || "<p>Đang cập nhật.</p>",
+            descriptionEn: d.descriptionEn || d.description || "<p>Being updated.</p>",
+            specs: d.specs || [],
+            features: d.features || [],
+            featuresEn: d.featuresEn || [],
+            relatedIds: [],
+          });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  // Fallback sang productDatabase cũ theo numeric ID
+  const numericId = parseInt(slug);
+  const fallbackProduct = !isNaN(numericId) && productDatabase[numericId]
+    ? productDatabase[numericId]
+    : getProduct(0);
+
+  const product = apiProduct || fallbackProduct;
 
   const [activeImg,    setActiveImg]    = useState(0);
   const [activeTab,    setActiveTab]    = useState<"desc" | "specs" | "reviews">("desc");
@@ -263,6 +308,18 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
   const mainImg     = product.images[activeImg]     || "";
   const mainFallback= product.imageFallbacks[activeImg] || "";
+
+  if (loading) {
+    return <div className={styles.page} style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-light)" }}>Đang tải...</div>;
+  }
+
+  if (notFoundApi && !apiProduct && isNaN(numericId)) {
+    return <div className={styles.page} style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16 }}>
+      <span style={{ fontSize: 48 }}>😕</span>
+      <p style={{ color: "var(--text)" }}>Sản phẩm không tồn tại</p>
+      <Link href="/products" className="btn-primary">← Quay lại danh sách</Link>
+    </div>;
+  }
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -333,10 +390,9 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
         {/* Right: Info */}
         <div className={styles.info}>
-          {/* Nav prev/next */}
+          {/* Nav back */}
           <div className={styles.navPrevNext}>
-            <Link href={`/products/${Math.max(1, productId - 1)}`} className={styles.navBtn} title="Sản phẩm trước">‹</Link>
-            <Link href={`/products/${productId + 1}`}             className={styles.navBtn} title="Sản phẩm tiếp">›</Link>
+            <Link href="/products" className={styles.navBtn} title={isVi ? "Quay lại danh sách" : "Back to list"}>‹ {isVi ? "Danh sách" : "All Products"}</Link>
           </div>
 
           <h1 className={styles.productName}>{isVi ? product.name : product.nameEn}</h1>

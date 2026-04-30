@@ -9,13 +9,40 @@ export default function ContactPage() {
 
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.MouseEvent) => {
+  const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
-    // TODO: kết nối API gửi mail
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", phone: "", message: "" });
+    setError("");
+
+    if (!form.name.trim() || !form.email.trim()) {
+      setError(p.errorRequired ?? "Vui lòng điền họ tên và email.");
+      return;
+    }
+
+    setIsSending(true);
+    try {
+      const res = await fetch("/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data?.error ?? "Gửi thất bại, vui lòng thử lại.");
+        return;
+      }
+
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+      setTimeout(() => setSent(false), 5000);
+    } catch {
+      setError("Không thể kết nối máy chủ. Vui lòng thử lại sau.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -62,9 +89,16 @@ export default function ContactPage() {
             rows={6}
           />
 
+          {/* Error message */}
+          {error && <p className={styles.errorMsg}>{error}</p>}
+
           {/* Submit */}
-          <button className={styles.submitBtn} onClick={handleSubmit}>
-            {sent ? p.sent : p.submit}
+          <button
+            className={styles.submitBtn}
+            onClick={handleSubmit}
+            disabled={isSending}
+          >
+            {sent ? p.sent : isSending ? (p.sending ?? "Đang gửi...") : p.submit}
           </button>
         </div>
       </section>

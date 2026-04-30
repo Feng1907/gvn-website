@@ -1,19 +1,33 @@
 import { ObjectId } from "mongodb";
 
 // ── Product ───────────────────────────────────────────────────────────────────
+export interface ProductSpec {
+  label: string;
+  labelEn: string;
+  value: string;
+  valueEn: string;
+}
+
 export interface Product {
   _id?: ObjectId;
-  name: string;          // Tên sản phẩm (Tiếng Việt)
-  nameEn?: string;       // Tên sản phẩm (English)
-  slug: string;          // URL-friendly
-  category: string;      // Danh mục
-  tag: string;           // Nhãn ngắn (SSD, 16TB, ...)
-  tagColor: string;      // Màu nhãn (#hex)
+  name: string;
+  nameEn?: string;
+  slug: string;
+  category: string;
+  catSlug: string;
+  tag: string;
+  tagColor: string;
   description?: string;
   descriptionEn?: string;
-  price?: number;        // Giá (VNĐ), optional
-  emoji: string;         // Icon hiển thị
-  bg: string;            // CSS gradient background
+  images: string[];
+  imageFallbacks: string[];
+  specs: ProductSpec[];
+  features: string[];
+  featuresEn: string[];
+  relatedSlugs: string[];
+  price?: number;
+  emoji: string;
+  bg: string;
   inStock: boolean;
   featured: boolean;
   createdAt: Date;

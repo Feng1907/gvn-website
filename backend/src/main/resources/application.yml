@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: gvn-backend
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/gvntmc}
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    com.gvntmc: DEBUG
