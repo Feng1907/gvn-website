@@ -1,3 +1,6 @@
+# ── Node modules (any location) ─────────────────────────────────
+node_modules/
+
 # ── Frontend (Next.js) ──────────────────────────────────────────
 frontend/node_modules
 frontend/.next/
