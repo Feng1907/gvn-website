@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f0fb"/>
+      <stop offset="100%" style="stop-color:#d0e4f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Ticket dispenser -->
+  <rect x="130" y="70" width="140" height="200" rx="10" fill="#1a2a4a"/>
+  <rect x="135" y="75" width="130" height="190" rx="8" fill="#0f1e38"/>
+  <!-- Display screen -->
+  <rect x="142" y="85" width="116" height="80" rx="5" fill="#000"/>
+  <rect x="146" y="89" width="108" height="72" rx="3" fill="#001a00"/>
+  <text x="200" y="115" font-family="Arial,sans-serif" font-size="11" fill="#00bb30" text-anchor="middle">DAVISOFT QMS PRO</text>
+  <text x="200" y="135" font-family="Courier New,monospace" font-size="30" font-weight="bold" fill="#00ff41" text-anchor="middle">A047</text>
+  <text x="200" y="153" font-family="Arial,sans-serif" font-size="9" fill="#00bb30" text-anchor="middle">Vui lòng vào quầy số 3</text>
+  <!-- Print slot -->
+  <rect x="148" y="175" width="104" height="10" rx="3" fill="#111"/>
+  <!-- Paper ticket coming out -->
+  <rect x="162" y="165" width="76" height="28" rx="1" fill="white"/>
+  <rect x="168" y="169" width="40" height="3" rx="1" fill="#ddd"/>
+  <text x="200" y="181" font-family="Arial,sans-serif" font-size="8" fill="#333" text-anchor="middle">STT: A-047</text>
+  <text x="200" y="190" font-family="Arial,sans-serif" font-size="7" fill="#666" text-anchor="middle">14:32  26/04/2026</text>
+  <!-- Control buttons -->
+  <rect x="148" y="196" width="104" height="30" rx="4" fill="#0d1f3a"/>
+  <rect x="152" y="200" width="44" height="22" rx="4" fill="#2563eb"/>
+  <rect x="200" y="200" width="48" height="22" rx="4" fill="#16a34a"/>
+  <text x="174" y="215" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">LẤY SỐ</text>
+  <text x="224" y="215" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">GỌI SỐ</text>
+  <!-- LAN port indicator -->
+  <circle cx="200" cy="244" r="5" fill="#00e676"/>
+  <text x="200" y="258" font-family="Arial,sans-serif" font-size="8" fill="#4fc3f7" text-anchor="middle">LAN Connected</text>
+  <!-- Bottom info -->
+  <rect x="0" y="295" width="400" height="105" fill="rgba(10,20,56,0.95)"/>
+  <text x="200" y="319" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle">DaviSoft QMS Pro</text>
+  <text x="200" y="339" font-family="Arial,sans-serif" font-size="12" fill="#90caf9" text-anchor="middle">Hệ thống quản lý xếp hàng</text>
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Màn hình LED · In vé tự động · LAN/WiFi</text>
+  <text x="200" y="376" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Phần mềm quản lý · Báo cáo thống kê</text>
+  <text x="200" y="394" font-family="Arial,sans-serif" font-size="10" fill="#4fc3f7" text-anchor="middle">Bảo hành 12 tháng</text>
+</svg>

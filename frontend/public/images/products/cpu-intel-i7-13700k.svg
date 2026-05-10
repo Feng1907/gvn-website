@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0068b5"/>
+      <stop offset="100%" style="stop-color:#00adef"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Chip body -->
+  <rect x="110" y="90" width="180" height="180" rx="8" fill="url(#chip)"/>
+  <rect x="120" y="100" width="160" height="160" rx="4" fill="#0a0a1a"/>
+  <!-- Chip pins top/bottom -->
+  <g fill="#c0a060">
+    <rect x="130" y="80" width="8" height="12" rx="2"/>
+    <rect x="148" y="80" width="8" height="12" rx="2"/>
+    <rect x="166" y="80" width="8" height="12" rx="2"/>
+    <rect x="184" y="80" width="8" height="12" rx="2"/>
+    <rect x="202" y="80" width="8" height="12" rx="2"/>
+    <rect x="220" y="80" width="8" height="12" rx="2"/>
+    <rect x="238" y="80" width="8" height="12" rx="2"/>
+    <rect x="256" y="80" width="8" height="12" rx="2"/>
+    <rect x="130" y="308" width="8" height="12" rx="2"/>
+    <rect x="148" y="308" width="8" height="12" rx="2"/>
+    <rect x="166" y="308" width="8" height="12" rx="2"/>
+    <rect x="184" y="308" width="8" height="12" rx="2"/>
+    <rect x="202" y="308" width="8" height="12" rx="2"/>
+    <rect x="220" y="308" width="8" height="12" rx="2"/>
+    <rect x="238" y="308" width="8" height="12" rx="2"/>
+    <rect x="256" y="308" width="8" height="12" rx="2"/>
+  </g>
+  <!-- Chip pins left/right -->
+  <g fill="#c0a060">
+    <rect x="80" y="118" width="12" height="8" rx="2"/>
+    <rect x="80" y="136" width="12" height="8" rx="2"/>
+    <rect x="80" y="154" width="12" height="8" rx="2"/>
+    <rect x="80" y="172" width="12" height="8" rx="2"/>
+    <rect x="80" y="190" width="12" height="8" rx="2"/>
+    <rect x="80" y="208" width="12" height="8" rx="2"/>
+    <rect x="80" y="226" width="12" height="8" rx="2"/>
+    <rect x="80" y="244" width="12" height="8" rx="2"/>
+    <rect x="308" y="118" width="12" height="8" rx="2"/>
+    <rect x="308" y="136" width="12" height="8" rx="2"/>
+    <rect x="308" y="154" width="12" height="8" rx="2"/>
+    <rect x="308" y="172" width="12" height="8" rx="2"/>
+    <rect x="308" y="190" width="12" height="8" rx="2"/>
+    <rect x="308" y="208" width="12" height="8" rx="2"/>
+    <rect x="308" y="226" width="12" height="8" rx="2"/>
+    <rect x="308" y="244" width="12" height="8" rx="2"/>
+  </g>
+  <!-- Intel logo text -->
+  <text x="200" y="158" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0068b5" text-anchor="middle">intel</text>
+  <text x="200" y="178" font-family="Arial,sans-serif" font-size="10" fill="#4fc3f7" text-anchor="middle" letter-spacing="2">CORE</text>
+  <text x="200" y="202" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" text-anchor="middle">i7</text>
+  <text x="200" y="222" font-family="Arial,sans-serif" font-size="11" fill="#90caf9" text-anchor="middle">13700K</text>
+  <!-- Bottom info -->
+  <rect x="0" y="310" width="400" height="90" fill="rgba(0,0,0,0.35)"/>
+  <text x="200" y="336" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Intel Core i7-13700K</text>
+  <text x="200" y="355" font-family="Arial,sans-serif" font-size="11" fill="#b3e5fc" text-anchor="middle">16 Cores · 24 Threads · 5.4GHz</text>
+  <text x="200" y="372" font-family="Arial,sans-serif" font-size="11" fill="#b3e5fc" text-anchor="middle">Socket LGA1700 · PCIe 5.0</text>
+  <text x="200" y="390" font-family="Arial,sans-serif" font-size="10" fill="#4fc3f7" text-anchor="middle">Raptor Lake · 13th Gen</text>
+</svg>

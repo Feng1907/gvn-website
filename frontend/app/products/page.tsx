@@ -193,15 +193,12 @@ export default function ProductsPage() {
   const [apiLoading, setApiLoading]       = useState(true);
 
   useEffect(() => {
-    fetch("/api/products?limit=50")
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => {
-        if (data?.success && Array.isArray(data.data?.items)) {
-          setApiProducts(data.data.items);
-        }
-      })
-      .catch(() => { /* giữ null → dùng hardcode fallback */ })
-      .finally(() => setApiLoading(false));
+    import("../../lib/apiClient").then(({ fetchProducts }) =>
+      fetchProducts({ limit: 50 })
+    ).then(data => {
+      if (data?.items) setApiProducts(data.items as ApiProduct[]);
+    }).catch(() => { /* fallback sang hardcode */ })
+    .finally(() => setApiLoading(false));
   }, []);
 
   // Chuyển apiProducts sang cùng shape với allProducts để render chung

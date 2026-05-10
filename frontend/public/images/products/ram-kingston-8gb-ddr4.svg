@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- RAM stick body -->
+  <rect x="60" y="130" width="280" height="120" rx="4" fill="#1e3a5f"/>
+  <rect x="60" y="130" width="280" height="8" fill="#2d6a4f"/>
+  <!-- PCB green tone -->
+  <rect x="64" y="138" width="272" height="104" rx="2" fill="#1b4332"/>
+  <!-- Chips on RAM -->
+  <g fill="#0d2137">
+    <rect x="80" y="155" width="36" height="24" rx="3"/>
+    <rect x="126" y="155" width="36" height="24" rx="3"/>
+    <rect x="172" y="155" width="36" height="24" rx="3"/>
+    <rect x="218" y="155" width="36" height="24" rx="3"/>
+    <rect x="264" y="155" width="36" height="24" rx="3"/>
+    <rect x="80" y="190" width="36" height="24" rx="3"/>
+    <rect x="126" y="190" width="36" height="24" rx="3"/>
+    <rect x="172" y="190" width="36" height="24" rx="3"/>
+    <rect x="218" y="190" width="36" height="24" rx="3"/>
+    <rect x="264" y="190" width="36" height="24" rx="3"/>
+  </g>
+  <!-- Gold contacts bottom -->
+  <g fill="#d4a017">
+    <rect x="70" y="245" width="6" height="20" rx="1"/>
+    <rect x="80" y="245" width="6" height="20" rx="1"/>
+    <rect x="90" y="245" width="6" height="20" rx="1"/>
+    <rect x="100" y="245" width="6" height="20" rx="1"/>
+    <rect x="110" y="245" width="6" height="20" rx="1"/>
+    <rect x="120" y="245" width="6" height="20" rx="1"/>
+    <rect x="130" y="245" width="6" height="20" rx="1"/>
+    <rect x="140" y="245" width="6" height="20" rx="1"/>
+    <rect x="150" y="245" width="6" height="20" rx="1"/>
+    <rect x="160" y="245" width="6" height="20" rx="1"/>
+    <rect x="170" y="245" width="6" height="20" rx="1"/>
+    <rect x="180" y="245" width="6" height="20" rx="1"/>
+    <rect x="196" y="245" width="6" height="20" rx="1"/>
+    <rect x="206" y="245" width="6" height="20" rx="1"/>
+    <rect x="216" y="245" width="6" height="20" rx="1"/>
+    <rect x="226" y="245" width="6" height="20" rx="1"/>
+    <rect x="236" y="245" width="6" height="20" rx="1"/>
+    <rect x="246" y="245" width="6" height="20" rx="1"/>
+    <rect x="256" y="245" width="6" height="20" rx="1"/>
+    <rect x="266" y="245" width="6" height="20" rx="1"/>
+    <rect x="276" y="245" width="6" height="20" rx="1"/>
+    <rect x="286" y="245" width="6" height="20" rx="1"/>
+    <rect x="296" y="245" width="6" height="20" rx="1"/>
+    <rect x="306" y="245" width="6" height="20" rx="1"/>
+    <rect x="316" y="245" width="6" height="20" rx="1"/>
+  </g>
+  <!-- Kingston label -->
+  <rect x="130" y="140" width="140" height="28" rx="3" fill="#c41e3a"/>
+  <text x="200" y="160" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">KINGSTON</text>
+  <!-- Bottom info -->
+  <rect x="0" y="295" width="400" height="105" fill="rgba(0,0,0,0.5)"/>
+  <text x="200" y="322" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle">Kingston ValueRAM</text>
+  <text x="200" y="344" font-family="Arial,sans-serif" font-size="13" fill="#81d4fa" text-anchor="middle">8GB · DDR4 · 3200MHz</text>
+  <text x="200" y="363" font-family="Arial,sans-serif" font-size="11" fill="#90caf9" text-anchor="middle">CL22 · 1.2V · Bảo hành trọn đời</text>
+  <text x="200" y="382" font-family="Arial,sans-serif" font-size="11" fill="#90caf9" text-anchor="middle">KVR32N22S6/8</text>
+</svg>

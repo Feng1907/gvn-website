@@ -123,28 +123,26 @@ export default function NewsPage() {
   const isVi = lang === "vi";
 
   useEffect(() => {
-    fetch("/api/news?published=true&limit=20")
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => {
-        if (data?.success && Array.isArray(data.data?.items)) {
-          const items: ArticleItem[] = data.data.items.map((a: Record<string, unknown>, i: number) => ({
-            id: (a._id as string) || i,
-            slug: a.slug as string,
-            category: a.category as string,
-            categoryEn: (a.categoryEn as string) || a.category as string,
-            date: a.createdAt ? (a.createdAt as string).slice(0, 10) : "",
-            readTime: (a.readTime as number) || 5,
-            emoji: (a.emoji as string) || "📰",
-            bg: (a.bg as string) || "linear-gradient(135deg,#1a6fc4,#00b4d8)",
-            title: a.title as string,
-            titleEn: (a.titleEn as string) || a.title as string,
-            excerpt: (a.excerpt as string) || "",
-            excerptEn: (a.excerptEn as string) || (a.excerpt as string) || "",
-          }));
-          setApiArticles(items);
-        }
-      })
-      .catch(() => { /* fallback sang hardcode */ });
+    import("../lib/apiClient").then(({ fetchArticles }) =>
+      fetchArticles({ published: true, limit: 20 })
+    ).then(data => {
+      if (!data?.items) return;
+      const items: ArticleItem[] = data.items.map((a, i) => ({
+        id:          a._id || a.id || i,
+        slug:        a.slug,
+        category:    a.category,
+        categoryEn:  a.categoryEn || a.category,
+        date:        a.createdAt ? a.createdAt.slice(0, 10) : "",
+        readTime:    a.readTime || 5,
+        emoji:       a.emoji || "📰",
+        bg:          a.bg || "linear-gradient(135deg,#1a6fc4,#00b4d8)",
+        title:       a.title,
+        titleEn:     a.titleEn || a.title,
+        excerpt:     a.excerpt || "",
+        excerptEn:   a.excerptEn || a.excerpt || "",
+      }));
+      setApiArticles(items);
+    }).catch(() => { /* fallback sang hardcode */ });
   }, []);
 
   const articles = apiArticles ?? hardcodedArticles;

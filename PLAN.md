@@ -1,396 +1,301 @@
-# COMPREHENSIVE MASTER PLAN — GVN WEBSITE
-**Ngày lập: 2026-04-24 | Version 1.0**  
-**Mục tiêu:** Hoàn thiện 100% website GVNTMC — bilingual, SEO-ready, Spring Boot-ready
+﻿# GVN Website — Project Plan & Progress
+
+> **Stack:** Next.js 16 (App Router, TypeScript, CSS Modules) + Spring Boot 3.3 (Java 21) + MongoDB
+> **Mục tiêu:** Website B2B song ngữ (Việt/Anh) cho công ty IT services GVN TMC
 
 ---
 
-## TIẾN ĐỘ TỔNG QUAN
+## Tổng quan tiến độ
 
-| Phase | Tên | Trạng thái | Ưu tiên |
-|-------|-----|------------|---------|
-| 0 | Git Workflow | ✅ XONG | NGAY |
-| 1 | Bug Fix Sprint | ✅ XONG | KHẨN CẤP |
-| 2 | Trang Chi Tiết | ✅ XONG | CAO |
-| 3 | DB Migration | ✅ XONG | TRUNG BÌNH-CAO |
-| 4 | Design System | ✅ XONG | TRUNG BÌNH |
-| 5 | Email Service | ✅ XONG | CAO |
-| 6 | SEO & Metadata | ✅ XONG | TRUNG BÌNH |
-| 7 | Spring Boot Backend | ✅ XONG | TƯƠNG LAI |
-| 8 | Tích hợp Next.js ↔ Spring Boot | ⬜ CHƯA LÀM | TƯƠNG LAI |
-| 9 | Deployment | 🔄 ĐANG TIẾN HÀNH | Song song |
-| 10 | Admin Dashboard | ⬜ CHƯA LÀM | THẤP |
+| Hạng mục | Trạng thái | Hoàn thành |
+|----------|-----------|-----------|
+| Cấu trúc dự án & DevOps | ✅ Hoàn thành | 100% |
+| Frontend — Trang chủ | ✅ Hoàn thành | 100% |
+| Frontend — Sản phẩm | ✅ Hoàn thành | 100% |
+| Frontend — Dịch vụ | ✅ Hoàn thành | 100% |
+| Frontend — Tin tức/Blog | ✅ Hoàn thành | 100% |
+| Frontend — Dự án | ✅ Hoàn thành | 100% |
+| Frontend — Giới thiệu | ✅ Hoàn thành | 100% |
+| Frontend — Liên hệ | ✅ Hoàn thành | 100% |
+| Hệ thống song ngữ | ✅ Hoàn thành | 100% |
+| API Layer (Next.js routes) | ✅ Hoàn thành | 100% |
+| Spring Boot Backend | ✅ Hoàn thành | 100% |
+| Database Models | ✅ Hoàn thành | 100% |
+| Dữ liệu sản phẩm (25 sản phẩm) | ✅ Hoàn thành | 100% |
+| Kết nối MongoDB (production) | ⬜ Chưa làm | 0% |
+| Admin Panel | ⬜ Chưa làm | 0% |
+| Authentication | ⬜ Chưa làm | 0% |
+| Deploy / CI-CD | ⬜ Chưa làm | 0% |
 
 ---
 
-## BỐI CẢNH
+## Phase 1 — Cấu trúc dự án ✅
 
-Website GVNTMC đang ở trạng thái ~70% hoàn thiện. Frontend đủ 8 trang nhưng thiếu trang chi tiết (services/news/projects), dữ liệu sản phẩm/bài viết/dịch vụ còn hardcode trong code thay vì lấy từ DB, form contact chưa gọi API thực sự, và có lỗi nghiêm trọng về tên thư mục API. Mục tiêu cuối cùng là hệ thống chạy mượt, chuẩn SEO, ảnh không lỗi, và có nền tảng sẵn sàng tích hợp Spring Boot backend trong tương lai.
+- [x] Monorepo: `frontend/` (Next.js 16) + `backend/` (Spring Boot 3.3)
+- [x] TypeScript cấu hình cho frontend
+- [x] `CLAUDE.md` + `AGENTS.md` — tài liệu hướng dẫn cho AI agents
+- [x] `.env.local` — biến môi trường (`MONGODB_URI`, `RESEND_API_KEY`)
+- [x] ESLint cấu hình với Next.js rules
+- [x] CSS Modules + Tailwind (kết hợp song song)
+- [x] Path alias `@/` → `frontend/app/`
 
 ---
 
-## PHASE 0 — GIT WORKFLOW ✅ XONG
+## Phase 2 — Hệ thống song ngữ ✅
 
-**Mục tiêu:** Không bao giờ push thẳng lên `main`. Mỗi feature = 1 branch riêng.
+File chính: `frontend/app/components/LangContext.tsx`
 
-- [x] Tạo branch `develop` từ `main`
-- [x] Push `develop` lên GitHub
-- [ ] Đặt `develop` là default branch trên GitHub *(thực hiện thủ công trên GitHub Settings)*
-- [ ] Bảo vệ `main` branch *(Settings → Branches → Require PR before merging)*
-- [x] Quy ước commit: `feat:`, `fix:`, `chore:`, `refactor:`
-- [x] Cấu trúc branch: `feature/<tên>` tách từ `develop`, merge về `develop` qua PR
+- [x] React Context `LangContext` cho toàn site
+- [x] Hook `useLang()` → `{ lang, setLang, t }`
+- [x] Object translations đầy đủ với nhánh `vi` / `en`
+- [x] Language switcher trong Navbar
+- [x] Dual-field trong DB: `title`/`titleEn`, `description`/`descriptionEn`, `specs[].value`/`specs[].valueEn`
+
+---
+
+## Phase 3 — Frontend Pages ✅
+
+### Trang chủ (`/`) ✅
+- [x] Hero section với thống kê công ty
+- [x] Featured products carousel (`ProductCarousel.tsx`)
+- [x] 6 dịch vụ chính showcase
+- [x] Partners / Testimonials section
+- [x] Footer với địa chỉ HCM & Hà Nội
+
+### Sản phẩm (`/products`) ✅
+- [x] Grid 25+ sản phẩm hardcoded (fallback từ API)
+- [x] 4 danh mục lọc với subcategories mở rộng:
+  - IT Components (bàn phím, bo mạch, CPU, RAM, SSD, tản nhiệt)
+  - IT & Construction (mạng, camera, switch)
+  - Banking Equipment (đếm tiền, phát hiện tiền giả, máy in nhiệt)
+  - Software Solutions (Windows 11, Kaspersky, Office 365)
+- [x] Sidebar filter với checkbox subcategory
+- [x] Phân trang (12 sản phẩm/trang)
+- [x] Sort: mặc định / A-Z / Z-A
+- [x] Skeleton loading state
+- [x] Image fallback (local → CDN URL → emoji)
+
+### Chi tiết sản phẩm (`/products/[id]`) ✅
+- [x] Gallery ảnh với thumbnails
+- [x] Tab interface: Mô tả / Thông số kỹ thuật / Đánh giá
+- [x] Bảng thông số kỹ thuật song ngữ
+- [x] Danh sách tính năng với checkmarks
+- [x] Sản phẩm liên quan (≥3 sản phẩm)
+- [x] CTA: Yêu cầu báo giá / Gọi ngay
+- [x] Social sharing: Facebook, Twitter, Email, Copy Link
+- [x] Light theme (white) — khác với dark glassmorphism phần còn lại
+- [x] `SmartImg` component với 3-tier fallback
+
+### Dịch vụ (`/services`) ✅
+- [x] 6 dịch vụ chính với card layout + hover overlay
+- [x] Grid responsive
+
+### Chi tiết dịch vụ (`/services/[slug]`) ✅
+- [x] Hero section với category badge
+- [x] Mô tả đầy đủ + danh sách tính năng
+- [x] Sidebar dịch vụ liên quan + CTA
+- [x] Nội dung song ngữ
+
+### Tin tức (`/news`) ✅
+- [x] 6 bài viết hardcoded (fallback từ API)
+- [x] Featured article (hiển thị lớn)
+- [x] Grid các bài còn lại
+- [x] 5 danh mục: Bảo mật, IT Services, Bảo trì, Camera & An ninh, Xây dựng, Banking
+- [x] Tìm kiếm bài viết
+- [x] Filter theo danh mục
+- [x] Sidebar: Recent posts + CTA widget
+
+### Chi tiết tin tức (`/news/[slug]`) ✅
+- [x] Hero với emoji + gradient background
+- [x] Metadata: danh mục, ngày, thời gian đọc
+- [x] Nội dung HTML đầy đủ (song ngữ)
+- [x] Social sharing: Facebook, LinkedIn, Copy Link
+- [x] Sidebar CTA tư vấn + bài viết liên quan
+
+### Dự án (`/projects`) ✅
+- [x] 8 dự án nổi bật (Shinhan Bank, Comet Vina, CJ Foods, Hyosung, v.v.)
+- [x] Filter theo danh mục dự án
+- [x] Load more
+- [x] Card layout song ngữ
+
+### Chi tiết dự án (`/projects/[slug]`) ✅
+- [x] Hero image với overlay + breadcrumb
+- [x] Scope of work (checklist)
+- [x] Sidebar: Client, Danh mục, Năm hoàn thành
+- [x] CTA + dự án liên quan
+
+### Giới thiệu (`/about`) ✅
+- [x] 7 section: Giới thiệu, Về chúng tôi, Phương châm, Chiến lược, Khách hàng, Triết lý kinh doanh, CTA banner
+- [x] Emoji-based visuals, nội dung song ngữ
+
+### Liên hệ (`/contact`) ✅
+- [x] Form: Tên, Email, SĐT, Nội dung (có validation)
+- [x] States: mặc định / đang gửi / đã gửi thành công
+- [x] Info: SĐT, Email, Địa chỉ HCM & Hà Nội
+- [x] API gửi email (Resend)
+
+---
+
+## Phase 4 — Components ✅
+
+| Component | Chức năng | Trạng thái |
+|-----------|-----------|-----------|
+| `Navbar.tsx` | Navigation + language switcher | ✅ |
+| `Hero.tsx` | Homepage hero + stats | ✅ |
+| `Products.tsx` | Featured products section | ✅ |
+| `Services.tsx` | 6 services showcase | ✅ |
+| `ProductCard.tsx` | Card sản phẩm | ✅ |
+| `ServiceCard.tsx` | Card dịch vụ | ✅ |
+| `ProjectCard.tsx` | Card dự án | ✅ |
+| `Partners.tsx` | Testimonials section | ✅ |
+| `Footer.tsx` | Site footer | ✅ |
+| `ProductCarousel.tsx` | Carousel ảnh sản phẩm | ✅ |
+| `SmartImg.tsx` | Image với 3-tier fallback | ✅ |
+| `LangContext.tsx` | Bilingual context provider | ✅ |
+| `AboutHero.tsx` | About page hero | ✅ |
+| `MissionValues.tsx` | Mission/values section | ✅ |
+| `StrategyClient.tsx` | Strategy section (client component) | ✅ |
+
+---
+
+## Phase 5 — Database Models ✅
+
+File: `frontend/lib/types.ts` + `frontend/lib/models/`
+
+| Model | Fields chính | Trạng thái |
+|-------|-------------|-----------|
+| `Product` | name, slug, category, images[], specs[], features[], price, emoji, bg | ✅ |
+| `Service` | title, slug, description, emoji, bg, order, active | ✅ |
+| `Article` | title, slug, excerpt, content, category, emoji, readTime, published | ✅ |
+| `Project` | title, slug, category, images[], client, location, completedYear, featured | ✅ |
+| `Contact` | name, email, phone, company, subject, message, status | ✅ |
+
+---
+
+## Phase 6 — API Routes (Next.js) ✅
+
+Helper: `frontend/lib/apiHelper.ts` — `ok()`, `created()`, `notFound()`, `badRequest()`, `serverError()`
+
+| Route | Method | Chức năng | Trạng thái |
+|-------|--------|-----------|-----------|
+| `/api/products` | GET, POST | Danh sách & tạo sản phẩm | ✅ |
+| `/api/products/[id]` | GET, PUT, DELETE | CRUD sản phẩm | ✅ |
+| `/api/services` | GET | Danh sách dịch vụ active | ✅ |
+| `/api/services/[slug]` | GET | Chi tiết dịch vụ theo slug | ✅ |
+| `/api/news` | GET | Danh sách bài đã publish | ✅ |
+| `/api/news/[slug]` | GET | Chi tiết bài viết | ✅ |
+| `/api/contacts` | POST | Gửi form liên hệ + email | ✅ |
+| `/api/projects` | GET | Danh sách dự án | ✅ |
+| `/api/projects/[slug]` | GET | Chi tiết dự án | ✅ |
+
+> **Known bug:** Một số route single-item nằm trong folder tĩnh `id/` thay vì `[id]/` — cần sửa.
+
+---
+
+## Phase 7 — Spring Boot Backend ✅
+
+Base URL: `http://localhost:8080/api/v1/`
+
+| Controller | Endpoints | Trạng thái |
+|-----------|-----------|-----------|
+| `ProductController` | GET /products, GET /products/{slug}, POST, PUT/{id}, DELETE/{id} | ✅ |
+| `ArticleController` | GET /news, GET /news/{slug} | ✅ |
+| `ServiceController` | GET /services, GET /services/{slug} | ✅ |
+| `ProjectController` | GET /projects, GET /projects/{slug} | ✅ |
+| `ContactController` | POST /contacts, GET /contacts | ✅ |
+| `SearchController` | GET /search?q=xxx (toàn site) | ✅ |
+
+**Features:**
+- [x] Standard response: `{ success, data }`
+- [x] Paginated: `{ content[], totalElements, totalPages, currentPage, size }`
+- [x] CORS config cho frontend (localhost:3000)
+- [x] Global exception handler
+- [x] Spring Security cấu hình
+- [x] MongoDB integration
+
+---
+
+## Phase 8 — API Abstraction Layer ✅
+
+File: `frontend/lib/apiClient.ts`
+
+- [x] Abstraction layer cho phép Next.js gọi cả internal API route lẫn Spring Boot
+- [x] Config-based switching giữa hai backend
+- [x] Type-safe responses
+
+---
+
+## Phase 9 — Dữ liệu sản phẩm (25 sản phẩm) ✅
+
+- [x] 25 sản phẩm hardcoded trong `products/page.tsx` và `products/[id]/page.tsx`
+- [x] Ảnh sản phẩm tại `frontend/public/images/products/`
+- [x] External CDN URL fallbacks cho mỗi sản phẩm
+- [x] Mô tả HTML song ngữ đầy đủ
+- [x] Thông số kỹ thuật song ngữ
+- [x] Related products mapping
+
+---
+
+## Backlog — Việc còn lại
+
+### Admin Panel ⬜
+- [ ] Trang quản trị sản phẩm (CRUD với UI)
+- [ ] Quản lý bài viết / tin tức
+- [ ] Quản lý dự án
+- [ ] Xem & xử lý liên hệ (status: new → reading → replied → closed)
+- [ ] Dashboard thống kê (số liên hệ mới, v.v.)
+
+### Authentication ⬜
+- [ ] Login admin
+- [ ] JWT / Session management
+- [ ] Route protection (middleware)
+- [ ] Role-based access (admin / editor)
+
+### Kết nối dữ liệu thực (MongoDB) ⬜
+- [ ] Migrate 25 sản phẩm hardcoded → MongoDB collection
+- [ ] Migrate 6 bài viết hardcoded → articles collection
+- [ ] Migrate 8 dự án hardcoded → projects collection
+- [ ] Seed script đầy đủ (`npx tsx lib/seed.ts`)
+- [ ] Pages đọc từ DB thay vì hardcode
+
+### Bug Fixes ⬜
+- [ ] Sửa API route tĩnh: folder `id/` → `[id]/` cho products, news, projects, contacts
+
+### Deploy ⬜
+- [ ] Vercel deploy cho frontend
+- [ ] VPS / Cloud deploy cho Spring Boot backend
+- [ ] MongoDB Atlas setup + migrate data
+- [ ] Domain + SSL
+- [ ] CI/CD pipeline (GitHub Actions)
+
+### Cải thiện ⬜
+- [ ] SEO: sitemap.xml + robots.txt đầy đủ
+- [ ] Tính năng tìm kiếm toàn site trên frontend (gọi `/api/v1/search`)
+- [ ] Analytics integration (Google Analytics / Plausible)
+- [ ] Image optimization + lazy loading
+
+---
+
+## Kiến trúc tổng quan
 
 ```
-main ← chỉ merge từ develop khi stable
-  └── develop ← integration branch
-        ├── feature/fix-api-naming      ✅ đã tạo
-        ├── feature/contact-api
-        ├── feature/detail-pages
-        ├── feature/db-migration
-        ├── feature/design-system
-        ├── feature/email-service
-        ├── feature/seo
-        └── feature/spring-boot-init (repo riêng hoặc subfolder /backend)
-```
-
----
-
-## PHASE 1 — BUG FIX SPRINT ✅ XONG
-**Branch:** `feature/fix-api-naming` → merge vào `develop`
-
-### 1.1 Fix API Folder Naming Bug
-- [x] Đổi tên `app/api/products/id/` → `app/api/products/[id]/`
-- [x] Đổi tên `app/api/projects/id/` → `app/api/projects/[id]/`
-- [x] Đổi tên `app/api/news/id/` → `app/api/news/[id]/`
-- [x] Cập nhật `params` sang `Promise<{id: string}>` (Next.js 16) trong cả 3 files
-
-### 1.2 Tạo Mongoose Model cho Article
-- [x] Tạo `lib/models/Article.ts` với đầy đủ schema + indexes
-
-### 1.3 Fix Contact Form — Kết nối API thực
-- [x] `handleSubmit` gọi `POST /api/contacts`
-- [x] `isSending` state + loading button
-- [x] Error handling + hiển thị thông báo lỗi
-- [x] Validation: name và email required
-
-### 1.4 Cập nhật Footer với thông tin thật
-- [x] Địa chỉ HCM: "51 Đường số 9, KDC Him Lam, P. Tân Hưng, Q.7, TP.HCM"
-- [x] Địa chỉ HN: "F9 Tòa nhà Kim Ánh, 78/1 Duy Tân, Cầu Giấy, Hà Nội"
-- [x] SĐT: "028 62515094 – 091 970 4433"
-- [x] Email: "support@gvntmc.com"
-- [x] Quick links dùng `<Link>` đến routes thực (`/about`, `/services`...)
-
----
-
-## PHASE 2 — TRANG CHI TIẾT ✅ XONG
-**Branch:** `feature/db-migration` (commit: ae6c375)
-
-### 2.1 Trang `/services/[slug]`
-- [x] Tạo `app/services/[slug]/page.tsx` + CSS
-- [x] Cập nhật `app/services/page.tsx` — Link đến detail
-
-### 2.2 Trang `/news/[slug]`
-- [x] Tạo `app/news/[slug]/page.tsx` + CSS
-- [x] `app/news/page.tsx` — Link slug đến detail
-
-### 2.3 Trang `/projects/[slug]`
-- [x] Tạo `app/projects/[slug]/page.tsx` + CSS
-- [x] Cập nhật `app/projects/page.tsx` — Link wrapper
-
----
-
-## PHASE 3 — MIGRATE DỮ LIỆU HARDCODE SANG MONGODB ✅ XONG
-**Ưu tiên: TRUNG BÌNH-CAO**  
-**Chiến lược:** Fetch từ API, nếu API lỗi thì fallback sang hardcode.
-
-### 3.1 Mở rộng Product schema ✅
-- [x] `lib/models/Product.ts` + `lib/types.ts`: thêm images, imageFallbacks, specs, features, featuresEn, relatedSlugs, catSlug
-
-### 3.2 Cập nhật Seed Script ✅
-- [x] Seed đầy đủ 25 sản phẩm vào `lib/seed.ts` (4 danh mục: Linh kiện, Công trình, Ngân hàng, Phần mềm)
-- [x] 6 articles, 6 services seed đầy đủ
-
-### 3.3 Products Page — Fetch từ API ✅
-- [x] `app/products/page.tsx`: `useEffect` fetch `/api/products?limit=50` + loading skeleton
-- [x] Fallback sang hardcode khi API lỗi
-- [x] Link href → `/products/${slug}`
-
-### 3.4 Products Detail — Dùng API slug ✅
-- [x] `app/products/[id]/page.tsx`: fetch `/api/products/{slug}` + fallback hardcode
-- [x] Extract `SmartImg` → `app/components/SmartImg.tsx`
-- [x] Xử lý loading + 404
-- [x] Fix import trùng SmartImg + productId undefined bug
-
-### 3.5 Services, News, Projects — Fetch từ API ✅
-- [x] `app/news/page.tsx` → fetch `/api/news?published=true&limit=20` + fallback hardcode
-- [~] `app/services/page.tsx` — giữ hardcode (Service model thiếu `features[]` và `image`, fetch từ API mất data hover overlay)
-- [~] `app/projects/page.tsx` — giữ hardcode từ LangContext (chưa có project seed data)
-
----
-
-## PHASE 4 — DESIGN SYSTEM ✅ XONG
-**Ưu tiên: TRUNG BÌNH**
-
-### 4.1 GVN Brand Color Tokens — thêm vào `app/globals.css`
-
-```css
-:root {
-  /* GVN BRAND (dựa trên #1a6fc4) */
-  --gvn-primary-50:  #e8f2fb;
-  --gvn-primary-100: #d0e6f8;
-  --gvn-primary-400: #3d8fd5;
-  --gvn-primary-500: #1a6fc4;   /* GVN Brand Blue chính */
-  --gvn-primary-600: #155aa0;
-  --gvn-primary-700: #0f4478;
-
-  /* Semantic */
-  --gvn-success: #10b981;
-  --gvn-warning: #f59e0b;
-  --gvn-error:   #ef4444;
-
-  /* Light Theme */
-  --gvn-light-bg:      #f8faff;
-  --gvn-light-surface: #ffffff;
-  --gvn-light-border:  #e0ecfa;
-  --gvn-light-text:    #1a2340;
-  --gvn-light-text-2:  #475569;
-
-  /* Spacing (8px grid) */
-  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
-  --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
-  --space-16:64px; --space-20:80px;
-
-  /* Border Radius */
-  --radius-sm:4px; --radius-md:8px; --radius-lg:16px;
-  --radius-xl:20px; --radius-2xl:24px; --radius-full:9999px;
-
-  /* Shadows */
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.12);
-  --shadow-md:   0 4px 16px rgba(0,0,0,0.18);
-  --shadow-lg:   0 8px 32px rgba(0,0,0,0.45);
-  --shadow-blue: 0 4px 20px rgba(26,111,196,0.35);
-}
-```
-
-- [x] Thêm CSS variables GVN brand vào `app/globals.css`
-- [x] Cập nhật `.btn-primary` dùng `--gvn-primary-500` + `--shadow-blue`
-- [x] Không xóa biến cũ để tránh break
-
----
-
-## PHASE 5 — EMAIL SERVICE ✅ XONG
-**Branch:** `feature/email-service`
-
-- [x] `npm install resend` (v6.12.2)
-- [x] Thêm hướng dẫn vào `.env.local`: `RESEND_API_KEY`, `NOTIFY_EMAIL`
-- [x] Tạo `lib/email.ts`: `sendContactNotification()` + `sendContactConfirmation()`
-- [x] Cập nhật `app/api/contacts/route.ts`: fire-and-forget email sau `insertOne`
-- [x] Email lỗi → vẫn lưu DB và trả 201 (Promise.all.catch)
-
----
-
-## PHASE 6 — SEO & METADATA ✅ XONG
-**Branch:** `feature/seo`
-
-- [x] Tạo `app/products/layout.tsx` — export `metadata`
-- [x] Tạo `app/services/layout.tsx`
-- [x] Tạo `app/news/layout.tsx`
-- [x] Tạo `app/projects/layout.tsx`
-- [x] Tạo `app/about/layout.tsx`
-- [x] Tạo `app/contact/layout.tsx`
-- [x] Cập nhật `app/layout.tsx` root: `openGraph`, `twitter`, `robots`, `canonical`, title template
-- [x] Tạo `app/sitemap.ts` — static sitemap (services + news slugs)
-- [x] Tạo `app/robots.ts` — allow all, disallow /api/ /admin/
-- [x] Thêm JSON-LD `Organization` schema vào root layout
-- [~] JSON-LD `Product` schema — bỏ qua (product detail là client component, cần layout riêng)
-
----
-
-## PHASE 7 — SPRING BOOT BACKEND ✅ XONG
-**Branch:** `feature/spring-boot-init` | **Thư mục:** `backend/`
-
-### Cấu trúc Project (`backend/src/main/java/com/gvntmc/backend/`)
-
-```
-✅ backend/
-├── pom.xml                     (Spring Boot 3.3.5, Java 21, Lombok, Security, Validation)
-├── src/main/resources/application.yml
-└── src/main/java/com/gvntmc/backend/
-    ├── GvnBackendApplication.java
-    ├── config/
-    │   ├── CorsConfig.java     ✅ Allow localhost:3000 + gvntmc.com
-    │   ├── MongoConfig.java    ✅ @EnableMongoAuditing
-    │   └── SecurityConfig.java ✅ Public endpoints, /admin/** → auth
-    ├── controller/
-    │   ├── ProductController   ✅ GET list/slug, POST/PUT/DELETE
-    │   ├── ServiceController   ✅ GET list/slug
-    │   ├── ProjectController   ✅ GET list/slug
-    │   ├── ArticleController   ✅ GET list/slug (/api/v1/news)
-    │   ├── ContactController   ✅ POST create, GET list (admin)
-    │   └── SearchController    ✅ GET /api/v1/search?q=...
-    ├── service/                ✅ Business logic cho tất cả entities
-    ├── repository/             ✅ MongoRepository cho 5 collections
-    ├── entity/                 ✅ Product, ServiceEntity, Article, Contact, Project
-    ├── dto/request/            ✅ ContactRequest (@Valid)
-    ├── dto/response/           ✅ ApiResponse<T>, PageResponse<T>
-    └── exception/              ✅ ResourceNotFoundException, GlobalExceptionHandler
-```
-
-### REST API Endpoints
-
-| Method | Path | Mô tả | Auth |
-|--------|------|-------|------|
-| GET | `/products?page=0&size=12&category=X` | Danh sách | Public |
-| GET | `/products/{slug}` | Chi tiết | Public |
-| POST/PUT/DELETE | `/products` | CRUD | Admin |
-| GET | `/services?active=true` | Danh sách | Public |
-| GET | `/services/{slug}` | Chi tiết | Public |
-| GET | `/projects?category=X` | Danh sách | Public |
-| GET | `/news?published=true` | Danh sách | Public |
-| GET | `/news/{slug}` | Nội dung đầy đủ | Public |
-| POST | `/contacts` | Gửi form | Public |
-| GET | `/search?q=cisco` | Tìm kiếm | Public |
-
-### CORS Config
-
-```java
-config.setAllowedOrigins(Arrays.asList(
-    "http://localhost:3000",
-    "https://gvntmc.com",
-    "https://www.gvntmc.com"
-));
-```
-
-### application.yml
-
-```yaml
-spring:
-  data.mongodb.uri: ${MONGODB_URI}
-  mail.host: smtp.gmail.com
-server.port: 8080
-```
-
----
-
-## PHASE 8 — TÍCH HỢP NEXT.JS ↔ SPRING BOOT ⬜ CHƯA LÀM
-
-### API Abstraction Layer — `lib/apiClient.ts`
-
-```typescript
-const BASE = process.env.NEXT_PUBLIC_USE_SPRING === "true"
-  ? "/api/v1"   // proxy → Spring Boot
-  : "/api";     // Next.js API routes
-
-export async function fetchProducts(params?) { ... }
-export async function fetchProductBySlug(slug: string) { ... }
-```
-
-### Proxy trong `next.config.ts`
-
-```typescript
-async rewrites() {
-  if (process.env.NEXT_PUBLIC_USE_SPRING !== "true") return [];
-  return [{ source: "/api/v1/:path*", destination: `${SPRING_BOOT_URL}/api/v1/:path*` }];
-}
-```
-
-### Env Variables cần thêm
-
-```bash
-NEXT_PUBLIC_USE_SPRING=false     # true = dùng Spring Boot
-SPRING_BOOT_URL=http://localhost:8080
-```
-
-- [ ] Tạo `lib/apiClient.ts`
-- [ ] Cập nhật `next.config.ts`
-- [ ] Cập nhật pages dùng `apiClient`
-
----
-
-## PHASE 9 — DEPLOYMENT 🔄 ĐANG TIẾN HÀNH
-
-### Vercel (Frontend)
-- [ ] Kết nối GitHub repo với Vercel
-- [ ] Cấu hình env vars: `MONGODB_URI`, `RESEND_API_KEY`, `NOTIFY_EMAIL`
-- [ ] Auto-deploy từ `main`
-
-### MongoDB Atlas (Database)
-- [ ] Tạo free cluster
-- [ ] Whitelist IP `0.0.0.0/0` cho Vercel
-- [ ] Cập nhật `MONGODB_URI` thành Atlas connection string
-- [ ] Chạy `npx tsx lib/seed.ts` để seed data
-
-### Spring Boot Hosting (Phase 7+)
-**Khuyến nghị: Railway.app** ($5/tháng — auto-detect Java/Maven)
-
----
-
-## PHASE 10 — ADMIN DASHBOARD ⬜ CHƯA LÀM
-
-- [ ] Route `/admin` bảo vệ bằng NextAuth.js (Auth.js v5)
-- [ ] CRUD sản phẩm (thêm, sửa, xóa, upload ảnh)
-- [ ] Quản lý liên hệ (xem, đổi status: new/reading/replied/closed)
-- [ ] Quản lý bài viết (WYSIWYG editor)
-- [ ] Dashboard overview (số liệu tổng)
-- [ ] Image upload: Cloudinary hoặc Uploadthing
-
----
-
-## GHI CHÚ KỸ THUẬT QUAN TRỌNG
-
-### Next.js 16 — Async Params
-
-```typescript
-// Route Handler (server) — PHẢI await
-type Context = { params: Promise<{ id: string }> };
-export async function GET(req: NextRequest, { params }: Context) {
-  const { id } = await params;
-}
-
-// Client Component — đọc đồng bộ OK
-export default function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params; // OK trong "use client"
-}
-```
-
-### lucide-react v1.x — Không có Social Icons
-Dùng inline SVG cho: Facebook, Twitter/X, LinkedIn, Instagram
-
-### SmartImg Pattern
-`app/components/SmartImg.tsx` — thứ tự: local `/images/...` → CDN fallback → emoji SVG placeholder
-
-### API Response Format (Nhất quán cho cả Next.js & Spring Boot)
-
-```json
-{ "success": true, "data": { ... } }
-{ "success": true, "data": { "items": [...], "pagination": { "total": 25, "page": 1 } } }
-{ "success": false, "error": "Mô tả lỗi" }
+Browser
+  │
+  ▼
+Next.js 16 (localhost:3000)
+  ├── App Router Pages (/about, /services, /products, /news, /projects, /contact)
+  ├── API Routes (/api/*)  ──────────────────────┐
+  └── CSS Modules + Tailwind                     │
+                                                  ▼
+                                        Spring Boot (localhost:8080)
+                                          └── /api/v1/*
+                                                  │
+                                                  ▼
+                                             MongoDB
+                                    (products, services, articles,
+                                     projects, contacts)
 ```
 
 ---
 
-## BẢNG FILES QUAN TRỌNG
-
-| File | Phase | Loại |
-|------|-------|------|
-| `app/api/products/[id]/route.ts` | 1 ✅ | Fixed |
-| `app/api/projects/[id]/route.ts` | 1 ✅ | Fixed |
-| `app/api/news/[id]/route.ts` | 1 ✅ | Fixed |
-| `lib/models/Article.ts` | 1 ✅ | Tạo mới |
-| `app/contact/page.tsx` | 1 ✅ | Fixed |
-| `app/components/Footer.tsx` | 1 ✅ | Fixed |
-| `app/services/[slug]/page.tsx` | 2 ✅ | Tạo mới |
-| `app/news/[slug]/page.tsx` | 2 ✅ | Tạo mới |
-| `app/projects/[slug]/page.tsx` | 2 ✅ | Tạo mới |
-| `lib/models/Product.ts` | 3 ✅ | Mở rộng |
-| `lib/types.ts` | 3 ✅ | Cập nhật |
-| `lib/seed.ts` | 3 ✅ | Mở rộng |
-| `app/products/page.tsx` | 3 ✅ | Fetch API |
-| `app/products/[id]/page.tsx` | 3 ✅ | Fetch API |
-| `app/globals.css` | 4 ⬜ | Design tokens |
-| `app/components/SmartImg.tsx` | 3/4 ✅ | Tạo mới |
-| `lib/email.ts` | 5 ⬜ | Tạo mới |
-| `app/api/contacts/route.ts` | 5 ⬜ | Thêm email |
-| `app/*/layout.tsx` (6 files) | 6 ⬜ | Tạo mới |
-| `app/sitemap.ts` | 6 ⬜ | Tạo mới |
-| `lib/apiClient.ts` | 8 ⬜ | Tạo mới |
-| `next.config.ts` | 8 ⬜ | Proxy rewrites |
+*Cập nhật lần cuối: 2026-05-10*

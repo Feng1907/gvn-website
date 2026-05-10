@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5"/>
+      <stop offset="100%" style="stop-color:#e0e0e0"/>
+    </linearGradient>
+    <radialGradient id="lens" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#4fc3f7"/>
+      <stop offset="40%" style="stop-color:#0277bd"/>
+      <stop offset="100%" style="stop-color:#01579b"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Mount arm -->
+  <rect x="188" y="60" width="24" height="60" rx="4" fill="#666"/>
+  <rect x="178" y="56" width="44" height="12" rx="6" fill="#555"/>
+  <!-- Camera body dome -->
+  <ellipse cx="200" cy="200" rx="110" ry="90" fill="#333"/>
+  <ellipse cx="200" cy="195" rx="106" ry="86" fill="#3a3a3a"/>
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="70" fill="#222"/>
+  <circle cx="200" cy="200" r="66" fill="#2a2a2a"/>
+  <!-- Lens assembly -->
+  <circle cx="200" cy="200" r="55" fill="#111"/>
+  <circle cx="200" cy="200" r="48" fill="url(#lens)"/>
+  <circle cx="200" cy="200" r="32" fill="#011f3d"/>
+  <circle cx="200" cy="200" r="22" fill="#0a0a0a"/>
+  <!-- IR LEDs ring -->
+  <g fill="#cc0000">
+    <circle cx="200" cy="148" r="5"/>
+    <circle cx="239" cy="161" r="5"/>
+    <circle cx="252" cy="200" r="5"/>
+    <circle cx="239" cy="239" r="5"/>
+    <circle cx="200" cy="252" r="5"/>
+    <circle cx="161" cy="239" r="5"/>
+    <circle cx="148" cy="200" r="5"/>
+    <circle cx="161" cy="161" r="5"/>
+  </g>
+  <!-- Lens reflection -->
+  <ellipse cx="190" cy="190" rx="8" ry="6" fill="rgba(255,255,255,0.15)" transform="rotate(-30,190,190)"/>
+  <!-- Brand badge -->
+  <rect x="126" y="278" width="148" height="26" rx="4" fill="#c62828"/>
+  <text x="200" y="296" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">HIKVISION</text>
+  <!-- Bottom info -->
+  <rect x="0" y="318" width="400" height="82" fill="rgba(33,33,33,0.9)"/>
+  <text x="200" y="340" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">DS-2CD2143G2-I · 4MP</text>
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="11" fill="#ef9a9a" text-anchor="middle">AcuSense AI · IR 40m · IP67 · IK10</text>
+  <text x="200" y="376" font-family="Arial,sans-serif" font-size="11" fill="#ffcdd2" text-anchor="middle">Phát hiện người/xe · WDR 120dB</text>
+  <text x="200" y="394" font-family="Arial,sans-serif" font-size="10" fill="#ef9a9a" text-anchor="middle">Bảo hành 24 tháng</text>
+</svg>

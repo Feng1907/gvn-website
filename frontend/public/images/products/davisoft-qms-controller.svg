@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f0fb"/>
+      <stop offset="100%" style="stop-color:#d0e4f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Device body -->
+  <rect x="80" y="90" width="240" height="200" rx="10" fill="#1a2a4a"/>
+  <rect x="86" y="96" width="228" height="188" rx="8" fill="#0f1e38"/>
+  <!-- LED Display -->
+  <rect x="100" y="110" width="200" height="80" rx="6" fill="#000"/>
+  <rect x="104" y="114" width="192" height="72" rx="4" fill="#001a00"/>
+  <!-- Display numbers -->
+  <text x="200" y="152" font-family="Courier New,monospace" font-size="36" font-weight="bold" fill="#00ff41" text-anchor="middle">047</text>
+  <text x="200" y="174" font-family="Arial,sans-serif" font-size="10" fill="#00bb30" text-anchor="middle">QUẦY PHỤC VỤ</text>
+  <!-- Control buttons -->
+  <g fill="#2563eb">
+    <rect x="104" y="204" width="44" height="28" rx="5"/>
+    <rect x="156" y="204" width="44" height="28" rx="5"/>
+    <rect x="208" y="204" width="44" height="28" rx="5"/>
+    <rect x="260" y="204" width="20" height="28" rx="5" fill="#dc2626"/>
+  </g>
+  <text x="126" y="223" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">GỌI SỐ</text>
+  <text x="178" y="223" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">NHẮC LẠI</text>
+  <text x="230" y="223" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">TIẾP THEO</text>
+  <text x="270" y="223" font-family="Arial,sans-serif" font-size="9" fill="white" text-anchor="middle">RESET</text>
+  <!-- Speaker grille -->
+  <g fill="#2a3f5f">
+    <rect x="104" y="245" width="192" height="4" rx="2"/>
+    <rect x="104" y="253" width="192" height="4" rx="2"/>
+    <rect x="104" y="261" width="192" height="4" rx="2"/>
+  </g>
+  <!-- Brand label -->
+  <rect x="0" y="310" width="400" height="90" fill="rgba(15,30,56,0.9)"/>
+  <text x="200" y="336" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">DAVISOFT QMS</text>
+  <text x="200" y="356" font-family="Arial,sans-serif" font-size="12" fill="#90caf9" text-anchor="middle">Bộ điều khiển hệ thống lấy số</text>
+  <text x="200" y="374" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Màn hình LED · Loa thông báo</text>
+  <text x="200" y="392" font-family="Arial,sans-serif" font-size="11" fill="#64b5f6" text-anchor="middle">Kết nối LAN · Phần mềm quản lý</text>
+</svg>

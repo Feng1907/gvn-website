@@ -23,15 +23,16 @@ export default function ContactPage() {
 
     setIsSending(true);
     try {
-      const res = await fetch("/api/contacts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+      const { postContact } = await import("../../lib/apiClient");
+      const result = await postContact({
+        name:    form.name,
+        email:   form.email,
+        phone:   form.phone,
+        message: form.message,
       });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data?.error ?? "Gửi thất bại, vui lòng thử lại.");
+      if (!result) {
+        setError("Gửi thất bại, vui lòng thử lại.");
         return;
       }
 
