@@ -179,7 +179,7 @@ interface ApiProduct {
 }
 
 export default function ProductsPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const p = t.productsPage;
 
   const [expanded, setExpanded]           = useState<Record<string, boolean>>({});
@@ -191,13 +191,15 @@ export default function ProductsPage() {
   // API state — graceful fallback sang hardcode nếu fetch thất bại
   const [apiProducts, setApiProducts]     = useState<ApiProduct[] | null>(null);
   const [apiLoading, setApiLoading]       = useState(true);
+  const [apiError, setApiError]           = useState(false);
 
   useEffect(() => {
     import("../../lib/apiClient").then(({ fetchProducts }) =>
       fetchProducts({ limit: 50 })
     ).then(data => {
       if (data?.items) setApiProducts(data.items as ApiProduct[]);
-    }).catch(() => { /* fallback sang hardcode */ })
+      else setApiError(true);
+    }).catch(() => setApiError(true))
     .finally(() => setApiLoading(false));
   }, []);
 
@@ -306,6 +308,12 @@ export default function ProductsPage() {
               {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
           </div>
+
+          {apiError && !apiLoading && (
+            <div style={{ background: "rgba(255,165,0,0.12)", border: "1px solid rgba(255,165,0,0.3)", borderRadius: "8px", padding: "10px 16px", marginBottom: "16px", fontSize: "0.85rem", color: "#f5a623" }}>
+              ⚠️ {lang === "en" ? "Showing cached data — live API unavailable." : "Đang hiển thị dữ liệu tạm — không thể kết nối máy chủ."}
+            </div>
+          )}
 
           {apiLoading ? (
             <div className={styles.grid}>

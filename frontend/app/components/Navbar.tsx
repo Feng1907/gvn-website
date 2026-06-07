@@ -19,8 +19,9 @@ const productDropdown = {
 
 export default function Navbar() {
   const { lang, setLang, t } = useLang();
-  const [menuOpen,     setMenuOpen]     = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [menuOpen,          setMenuOpen]          = useState(false);
+  const [dropdownOpen,      setDropdownOpen]      = useState(false);
+  const [mobileProductOpen, setMobileProductOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const isVi = lang === "vi";
 
@@ -114,7 +115,7 @@ export default function Navbar() {
             >GB</button>
           </div>
 
-          <button className="btn-primary">{t.nav.quote}</button>
+          <Link href="/contact" className="btn-primary">{t.nav.quote}</Link>
 
           <button
             className={styles.hamburger}
@@ -129,16 +130,43 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className={styles.mobileMenu}>
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={styles.navLink}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.dropdown ? (
+              <div key={item.label}>
+                <button
+                  className={styles.navLink}
+                  style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer" }}
+                  onClick={() => setMobileProductOpen(!mobileProductOpen)}
+                >
+                  {item.label}
+                  <span className={`${styles.arrow} ${mobileProductOpen ? styles.arrowUp : ""}`}>▾</span>
+                </button>
+                {mobileProductOpen && (
+                  <div style={{ paddingLeft: "1rem" }}>
+                    {ddItems.map((dd) => (
+                      <Link
+                        key={dd.href}
+                        href={dd.href}
+                        className={styles.ddItem}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {dd.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={styles.navLink}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
           <div className={styles.mobileLang}>
             <button
               className={`${styles.langBtn} ${lang === "vi" ? styles.langActive : ""}`}

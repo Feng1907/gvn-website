@@ -327,7 +327,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     <div className={styles.page}>
       {/* ── Breadcrumb ── */}
       <div className={styles.breadcrumb}>
-        <Link href="/" className={styles.bLink}>{isVi ? "Home" : "Home"}</Link>
+        <Link href="/" className={styles.bLink}>{isVi ? "Trang chủ" : "Home"}</Link>
         <span className={styles.bSep}>/</span>
         <Link href="/products" className={styles.bLink}>{isVi ? "Sản phẩm" : "Products"}</Link>
         {product.categoryPath.slice(1).map((p, i) => (
