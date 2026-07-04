@@ -35,7 +35,7 @@
 - [x] TypeScript cấu hình cho frontend
 - [x] `CLAUDE.md` + `AGENTS.md` — tài liệu hướng dẫn cho AI agents
 - [x] `.env.local` — biến môi trường (`MONGODB_URI`, `RESEND_API_KEY`)
-- [x] ESLint cấu hình với Next.js rules
+- [x] ESLint cấu hình với Next.js rules.
 - [x] CSS Modules + Tailwind (kết hợp song song)
 - [x] Path alias `@/` → `frontend/app/`
 
